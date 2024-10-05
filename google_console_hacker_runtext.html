@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONGALI1720 Matrix-Style Login</title>
+    <style>
+        body {
+            background-color: black;
+            color: limegreen;
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+        }
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Place behind other content */
+        }
+        .container {
+            z-index: 1; /* Bring container to the front */
+            position: relative; /* Position relative to container */
+            top: 20%; /* Position from the top */
+            width: 100%;
+            text-align: center; /* Center-align text */
+        }
+        h1 {
+            font-size: 2.5rem; /* Header font size */
+        }
+        form {
+            display: inline-block; /* Center the form */
+            margin-top: 20px;
+            padding: 30px; /* Internal spacing */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            border: 2px solid transparent; /* Border for glowing effect */
+            position: relative; /* For the glowing effect */
+            overflow: hidden; /* Prevent overflow from the glowing effect */
+        }
+        input[type="text"], input[type="password"] {
+            background-color: black; /* Input background */
+            color: limegreen; /* Input text color */
+            border: 1px solid limegreen; /* Input border color */
+            padding: 10px; /* Internal spacing */
+            margin: 10px 0; /* Margin between inputs */
+            width: 100%; /* Full width inputs */
+            font-size: 1rem; /* Font size for inputs */
+        }
+        input[type="submit"] {
+            background-color: limegreen; /* Submit button background */
+            color: black; /* Submit button text color */
+            border: none; /* Remove border */
+            padding: 10px 20px; /* Internal spacing */
+            font-size: 1rem; /* Font size for button */
+            cursor: pointer; /* Change cursor on hover */
+        }
+        input[type="submit"]:hover {
+            background-color: black; /* Change background on hover */
+            color: limegreen; /* Change text color on hover */
+        }
+        .error {
+            color: red; /* Error message color */
+            margin-top: 10px; /* Margin above error message */
+        }
+        /* Styles for the running text */
+        .marquee {
+            position: absolute; /* Position absolutely */
+            bottom: 10px; /* Distance from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            white-space: nowrap; /* Prevent line breaks */
+            color: red; /* Text color set to red */
+            font-size: 1rem; /* Font size */
+            animation: marquee 10s linear infinite; /* Animation for scrolling effect */
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); } /* Start off-screen */
+            100% { transform: translateX(-100%); } /* End off-screen */
+        }
+    </style>
+</head>
+<body>
+
+<div class="matrix" id="matrix"></div>
+
+<div class="container">
+    <h1>Welcome to DarkWeb Login</h1>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required> <!-- Username input -->
+        <input type="password" id="password" placeholder="Password" required> <!-- Password input -->
+        <input type="submit" value="Login"> <!-- Submit button -->
+    </form>
+    <div class="error" id="error-message"></div> <!-- Error message display -->
+</div>
+
+<!-- Running text at the bottom center -->
+<div class="marquee">
+    Kongali1720 @github.com/Reddit, Dark Mode, Club Mate. BugBounty, micromanagement, developer jokes and IT Development Program.
+</div>
+
+<script>
+    // Matrix rain effect
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    document.getElementById('matrix').appendChild(canvas);
+
+    // Set canvas dimensions
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const columns = Math.floor(canvas.width / 20); // Calculate columns based on width
+    const drops = Array(columns).fill(1); // Initialize drops array
+
+    const matrixEffect = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Background fade effect
+        ctx.fillRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+        ctx.fillStyle = '#0f0'; // Green text color
+        ctx.font = '20px monospace'; // Font for matrix effect
+
+        drops.forEach((y, x) => {
+            const text = String.fromCharCode(Math.random() * 128); // Random character
+            ctx.fillText(text, x * 20, y * 20); // Draw character
+
+            // Reset drop position
+            if (y * 20 > canvas.height && Math.random() > 0.975) drops[x] = 0;
+            drops[x]++; // Move drop down
+        });
+    };
+
+    setInterval(matrixEffect, 50); // Run matrix effect at intervals
+
+    // Login validation
+    const form = document.getElementById('login-form'); // Get the form
+    const errorMessage = document.getElementById('error-message'); // Get the error message display
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const username = document.getElementById('username').value; // Get username input
+        const password = document.getElementById('password').value; // Get password input
+
+        // Validate username and password
+        if (username === 'kongali1720' && password === 'aligeno') {
+            window.location.href = 'https://console.cloud.google.com/user-preferences/cloud-profile?cloudshell=true&project=even-cirrus-428402-f6'; // Redirect to URL
+        } else {
+            errorMessage.textContent = 'Invalid Username or Password'; // Show error message
+        }
+    });
+</script>
+
+</body>
+</html>
