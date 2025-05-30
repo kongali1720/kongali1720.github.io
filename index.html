@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Image Search Engine - Unsplash</title>
+  <title>Image Search Engine + Dev Roadmap</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,20 +16,25 @@
       align-items: center;
       min-height: 100vh;
     }
+
     header {
       text-align: center;
       margin-bottom: 20px;
     }
+
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
       text-shadow: 0 0 5px #00ff00;
     }
+
     .search-box {
       display: flex;
       justify-content: center;
       gap: 10px;
+      margin-bottom: 20px;
     }
+
     #search-input {
       padding: 10px;
       width: 300px;
@@ -38,6 +43,7 @@
       border: none;
       outline: none;
     }
+
     #search-button {
       padding: 10px 20px;
       background: #00ff00;
@@ -48,17 +54,32 @@
       color: #121212;
       transition: background 0.3s ease;
     }
+
     #search-button:hover {
       background: #00cc00;
     }
+
+    .banner {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .banner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ff00;
+    }
+
     .image-container {
-      margin-top: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
       width: 100%;
       max-width: 1000px;
+      margin-top: 20px;
     }
+
     .image-container img {
       width: 100%;
       border-radius: 10px;
@@ -66,9 +87,11 @@
       transition: transform 0.3s ease;
       cursor: pointer;
     }
+
     .image-container img:hover {
       transform: scale(1.05);
     }
+
     footer {
       margin-top: auto;
       text-align: center;
@@ -80,17 +103,28 @@
 </head>
 <body>
   <header>
-    <h1>Image Search Engine - Unsplash</h1>
+    <h1>🧠 Dev Roadmap + Image Search</h1>
     <div class="search-box">
-      <input type="text" id="search-input" placeholder="Enter a search term" />
+      <input type="text" id="search-input" placeholder="Cari gambar dari Unsplash..." />
       <button id="search-button">Search</button>
     </div>
   </header>
+
+  <!-- Gambar Banner Dev Roadmap -->
+  <div class="banner">
+    <a href="https://github.com/kongali1720/dev-roadmap-indonesia" target="_blank">
+      <img src="https://raw.githubusercontent.com/kongali1720/dev-roadmap-indonesia/main/Dev-Roadmap-Indonesia.png" 
+           alt="Dev Roadmap Indonesia" />
+    </a>
+  </div>
+
+  <!-- Hasil pencarian gambar -->
   <main>
     <div class="image-container" id="image-container"></div>
   </main>
+
   <footer>
-    Made with 💚 by Kongali1720
+    Made with 💚 by Kongali1720 — Powered by Unsplash API
   </footer>
 
   <script>
@@ -134,11 +168,6 @@
         imageContainer.innerHTML = `<p>Error fetching images: ${error.message}</p>`;
       }
     }
-
-    // Load default images on page load
-    window.addEventListener('load', () => {
-      searchImages('coding');
-    });
 
     searchButton.addEventListener('click', () => {
       searchImages(searchInput.value.trim());
