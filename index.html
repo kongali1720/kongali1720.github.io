@@ -8,9 +8,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      margin: 0; padding: 40px 20px;
+      margin: 0;
+      padding: 40px 20px;
       font-family: 'Inter', sans-serif;
-      background: #fff;
+      background: linear-gradient(to bottom right, #ffffff, #d0e7ff, #a3d0ff);
       color: #0b1f3f;
       display: flex;
       justify-content: center;
@@ -21,6 +22,10 @@
       max-width: 720px;
       width: 100%;
       text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 80, 160, 0.2);
     }
     h1 {
       font-weight: 700;
@@ -51,7 +56,6 @@
       list-style: none;
       padding-left: 0;
       margin-bottom: 2rem;
-      color: #0a2342;
     }
     ul li {
       margin-bottom: 0.6rem;
@@ -112,7 +116,6 @@
       margin-top: -10px;
       margin-bottom: 20px;
     }
-    /* Sponsor Logos */
     .sponsors {
       margin-top: 3rem;
       display: flex;
@@ -128,8 +131,7 @@
       transition: filter 0.3s ease;
       user-select: none;
     }
-    .sponsor-logo:hover,
-    .sponsor-logo:focus {
+    .sponsor-logo:hover, .sponsor-logo:focus {
       filter: none;
       outline: none;
       cursor: pointer;
@@ -139,15 +141,13 @@
   </style>
 </head>
 <body>
-
   <main class="container" role="main" aria-label="Dukungan dan kontak / Support and contact">
-
     <h1>Kongali1720</h1>
 
     <section aria-labelledby="support-heading">
       <h2 id="support-heading"><span class="symbol">💡</span>Dukung Aku Tetap Berkarya<br /><small class="small-text">Support Me to Keep Creating</small></h2>
       <p>
-        <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button" aria-label="Donasi melalui PayPal untuk membeli kopi / Donate via PayPal to buy coffee">
+        <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button">
           ☕ Buy Me a Coffee via PayPal
         </a>
       </p>
@@ -176,7 +176,7 @@
         They are not different — they were born to teach the world about pure love and extraordinary patience.
       </blockquote>
       <p>
-        <a href="https://mydonation4ds.github.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button" aria-label="Klik untuk berdonasi sekarang untuk Down Syndrome / Click to donate now for Down Syndrome">
+        <a href="https://mydonation4ds.github.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button">
           Berdonasi Sekarang / Donate Now
         </a>
       </p>
@@ -185,16 +185,11 @@
     <section aria-label="Sponsor and payment partners" style="margin-top: 4rem;">
       <h2><span class="symbol">🤝</span>Partner dan Sponsor / Partners & Sponsors</h2>
       <div class="sponsors" role="list" aria-label="Sponsor logos">
-
-        <!-- Payment Logos -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="sponsor-logo" role="listitem" tabindex="0" />
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo" role="listitem" tabindex="0" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="PayPal" 
-
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="PayPal" class="sponsor-logo" role="listitem" tabindex="0" />
       </div>
     </section>
-
   </main>
-
 </body>
 </html>
