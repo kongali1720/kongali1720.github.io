@@ -1,319 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Powerful Matrix Search - Kongali1720</title>
+  <title>Kongali1720 - Dukungan & Kontak / Support & Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body, html {
-      margin: 0; padding: 0; height: 100%; overflow-x: hidden;
-      background: black;
-      color: #00ff00;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      position: relative;
-      z-index: 1;
-    }
-    #matrixCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: black;
-      display: block;
-    }
-    header {
-      margin-top: 40px;
-      text-align: center;
-      z-index: 2;
-      position: relative;
-      user-select: none;
-    }
-    #roadmap-img {
-      max-width: 800px;
-      width: 90vw;
-      border: 3px solid #00ff00;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #00ff00;
-      margin-bottom: 25px;
-      background: rgba(0, 0, 0, 0.7);
-    }
-    .search-box {
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #0b1f3f;
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 30px;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
       width: 100%;
-      max-width: 600px;
-      position: relative;
-      z-index: 2;
+      text-align: center;
     }
-    #search-input {
-      padding: 12px 16px;
-      font-size: 1.3rem;
-      border-radius: 8px;
-      border: 2px solid #00ff00;
-      background: rgba(0, 0, 0, 0.8);
-      color: #00ff00;
-      outline: none;
-      flex-grow: 1;
-      transition: border-color 0.3s ease;
-    }
-    #search-input:focus {
-      border-color: #00cc00;
-      box-shadow: 0 0 8px #00cc00;
-      background: rgba(0, 0, 0, 0.95);
-    }
-    #search-button {
-      padding: 12px 24px;
-      background: #00ff00;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #121212;
-      transition: background 0.3s ease;
-    }
-    #search-button:hover {
-      background: #00cc00;
-    }
-    #image-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      width: 90vw;
-      margin-bottom: 50px;
-      z-index: 2;
-      position: relative;
-    }
-    #image-container img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #00ff00;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    #image-container img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      color: #00aa00;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-      z-index: 2;
-      position: relative;
+    h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 0.3em;
+      color: #002b5c;
+      letter-spacing: 2px;
       user-select: none;
     }
-
-    /* New section styling */
-    #info-section {
-      max-width: 900px;
-      width: 90vw;
-      background: rgba(0, 0, 0, 0.7);
-      border: 2px solid #00ff00;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #00ff00;
-      padding: 20px 30px;
-      margin-bottom: 50px;
-      color: #00ff00;
-      font-family: 'Courier New', Courier, monospace;
-      z-index: 2;
-      position: relative;
+    h2 {
+      font-weight: 600;
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: #003d82;
+      border-bottom: 2px solid #0053a0;
+      padding-bottom: 0.3em;
+      user-select: none;
     }
-    #info-section h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 1.8rem;
-      letter-spacing: 1.5px;
+    p, li {
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #1a2d58;
+      user-select: text;
     }
-    #info-section table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 2rem;
+      color: #0a2342;
     }
-    #info-section th, #info-section td {
-      border: 1px solid #00ff00;
-      padding: 10px;
-      text-align: left;
+    ul li {
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      font-size: 1.05rem;
     }
-    #info-section th {
-      background: #003300;
+    a {
+      color: #004a99;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      user-select: text;
     }
-    #info-section td {
-      background: #001a00;
+    a:hover, a:focus {
+      color: #0071ce;
+      border-color: #0071ce;
+      outline: none;
     }
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
+    blockquote {
+      font-style: italic;
+      color: #004080;
+      border-left: 4px solid #0071ce;
+      padding-left: 1rem;
+      margin: 1.8rem 0;
+      user-select: text;
     }
-    ::-webkit-scrollbar-track {
-      background: black;
+    .btn-primary {
+      background-color: #0053a0;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
+      text-decoration: none;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #00ff00;
-      border-radius: 4px;
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #0071ce;
+      outline: none;
+    }
+    .symbol {
+      display: inline-block;
+      font-size: 1.3rem;
+      margin-right: 6px;
+      vertical-align: middle;
+      user-select: none;
+    }
+    .small-text {
+      font-size: 0.9rem;
+      color: #004a99;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+    /* Sponsor Logos */
+    .sponsors {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+    }
+    .sponsor-logo {
+      width: 90px;
+      height: auto;
+      filter: grayscale(100%) opacity(0.6);
+      transition: filter 0.3s ease;
+      user-select: none;
+    }
+    .sponsor-logo:hover,
+    .sponsor-logo:focus {
+      filter: none;
+      outline: none;
+      cursor: pointer;
+      transform: scale(1.05);
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
   </style>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
 
-  <header>
-    <img
-      id="roadmap-img"
-      src="https://raw.githubusercontent.com/kongali1720/dev-roadmap-indonesia/main/Dev-Roadmap-Indonesia.png"
-      alt="Dev Roadmap Indonesia"
-    />
-    <div class="search-box">
-      <input type="text" id="search-input" placeholder="Enter search term..." autocomplete="off" />
-      <button id="search-button">Search</button>
-    </div>
-  </header>
+  <main class="container" role="main" aria-label="Dukungan dan kontak / Support and contact">
 
-  <main>
-    <div id="image-container"></div>
+    <h1>Kongali1720</h1>
 
-    <!-- New Info Section with your content -->
-    <section id="info-section">
-      <h2>🚀 Fitur-fitur Unggulan</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Fitur</th>
-            <th>Status</th>
-            <th>Keterangan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>🎯 CLI Analysis dengan input contract</td><td>✅</td><td>Sudah dibuat</td></tr>
-          <tr><td>💥 Deteksi honeypot & transfer disable</td><td>✅</td><td>Analisa ABI</td></tr>
-          <tr><td>🧠 Otomatis analisa kode Solidity via API</td><td>✅</td><td>Menggunakan Etherscan API</td></tr>
-          <tr><td>📂 Output JSON untuk integrasi tools lain</td><td>🔄</td><td>Lagi disiapkan di opsi --json CLI</td></tr>
-          <tr><td>🌐 Web UI (Flask/Streamlit)</td><td>🔄</td><td>Sedang dibangun (index.html + Flask)</td></tr>
-          <tr><td>🔒 Token blacklist update otomatis</td><td>🔄</td><td>blacklist.json + auto fetch planned</td></tr>
-          <tr><td>🌍 Trending token auto-scan (DEXTools)</td><td>🔄</td><td>Bakal scraping / DEXTools API (jika available)</td></tr>
-        </tbody>
-      </table>
+    <section aria-labelledby="support-heading">
+      <h2 id="support-heading"><span class="symbol">💡</span>Dukung Aku Tetap Berkarya<br /><small class="small-text">Support Me to Keep Creating</small></h2>
+      <p>
+        <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button" aria-label="Donasi melalui PayPal untuk membeli kopi / Donate via PayPal to buy coffee">
+          ☕ Buy Me a Coffee via PayPal
+        </a>
+      </p>
+      <p>
+        Dengan dukunganmu, aku bisa terus menulis script tengah malam dan berkarya untuk kita semua.<br />
+        With your support, I can keep coding late nights and creating for all of us.
+      </p>
+    </section>
 
-      <section id="support-connect-humanity" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; color: #00ff00; font-family: monospace;">
+    <section aria-labelledby="connect-heading">
+      <h2 id="connect-heading"><span class="symbol">🚀</span>Hubungi Aku<br /><small class="small-text">Get in Touch</small></h2>
+      <ul>
+        <li><strong>GitHub:</strong> <a href="https://github.com/kongali1720" target="_blank" rel="noopener noreferrer">kongali1720</a></li>
+        <li><strong>Email:</strong> <a href="mailto:kongali1720@gmail.com">kongali1720@gmail.com</a></li>
+        <li><strong>Website:</strong> Coming soon — stay curious...</li>
+      </ul>
+    </section>
 
-  <!-- Kolom 1: Support -->
-  <div>
-    <h2>💡 Dukung aku agar tetap waras menulis script tengah malam...</h2>
-    <p>
-      <a href="https://www.paypal.com/paypalme/bungtempong99" style="color:#00ff00; font-weight: bold; text-decoration: underline;">
-        Buy Me a Coffee via PayPal
-      </a><br />
-      Support with ☕ so I can buy 🍜 and keep being 🧠!
-    </p>
-  </div>
+    <section aria-labelledby="humanity-heading">
+      <h2 id="humanity-heading"><span class="symbol">❤️</span>Humanity Mode: Down Syndrome<br /><small class="small-text">Supporting Down Syndrome Warriors</small></h2>
+      <p><strong>🎯 Target / Target:</strong> Anak-anak Pejuang Down Syndrome / Down Syndrome Warriors Kids</p>
+      <p><strong>📡 Status / Status:</strong> Butuh Dukungan / Need Support</p>
+      <p><strong>🧠 Response / Response:</strong> Buka Hati + Klik Link = Satu Senyum Baru / Open Hearts + Click Link = A New Smile</p>
+      <blockquote>
+        Mereka bukan berbeda — mereka dilahirkan untuk mengajarkan dunia tentang cinta yang murni dan kesabaran yang luar biasa.<br />
+        They are not different — they were born to teach the world about pure love and extraordinary patience.
+      </blockquote>
+      <p>
+        <a href="https://mydonation4ds.github.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button" aria-label="Klik untuk berdonasi sekarang untuk Down Syndrome / Click to donate now for Down Syndrome">
+          Berdonasi Sekarang / Donate Now
+        </a>
+      </p>
+    </section>
 
-  <!-- Kolom 2: Connect -->
-  <div>
-    <h2>🚀 🇮🇩 Let’s Connect Like Hackers</h2>
-    <ul style="list-style: none; padding-left: 0;">
-      <li>GitHub: <a href="https://github.com/kongali1720" style="color:#00ff00;">kongali1720</a></li>
-      <li>Email: <a href="mailto:kongali1720@gmail.com" style="color:#00ff00;">kongali1720@gmail.com</a></li>
-      <li>Site: Coming soon — stay curious...</li>
-    </ul>
-  </div>
+    <section aria-label="Sponsor and payment partners" style="margin-top: 4rem;">
+      <h2><span class="symbol">🤝</span>Partner dan Sponsor / Partners & Sponsors</h2>
+      <div class="sponsors" role="list" aria-label="Sponsor logos">
 
-  <!-- Kolom 3: Humanity -->
-  <div>
-    <h2>❤️❤❤️ INITIATING HUMANITY MODE for Down Syndrome ❤️❤❤️</h2>
-    <p>🎯 Target Locked: Anak-anak Pejuang Down Syndrome</p>
-    <p>📡 Status: Butuh Dukungan</p>
-    <p>🧠 Response: Buka Hati + Klik Link = Satu Senyum Baru</p>
-    <blockquote style="color:#00ff00; font-style: italic; border-left: 4px solid #00ff00; padding-left: 10px;">
-      Mereka bukan berbeda — mereka dilahirkan untuk mengajarkan dunia tentang cinta yang murni dan kesabaran yang luar biasa.
-    </blockquote>
-    <p align="center">
-      <a href="https://mydonation4ds.github.io/" target="_blank" style="color:#00ff00; font-weight:bold; text-decoration: underline;">
-        Klik untuk berdonasi sekarang!
-      </a>
-    </p>
-  </div>
+        <!-- Payment Logos -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="sponsor-logo" role="listitem" tabindex="0" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo" role="listitem" tabindex="0" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="PayPal" 
 
-</section>
+      </div>
+    </section>
 
+  </main>
 
-  <footer>
-    <p>© 2025 by Kongali1720. Made with ❤️ in Indonesia.</p>
-  </footer>
-
-  <script>
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Set canvas to full screen
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    const letters = 'アァイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const fontSize = 20;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = new Array(columns).fill(1);
-
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#0F0';
-      ctx.font = fontSize + 'px monospace';
-
-      for(let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 50);
-
-    // Unsplash Search Images logic
-    const apiUrl = 'https://source.unsplash.com/featured/?';
-
-    const imageContainer = document.getElementById('image-container');
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-
-    function loadImages(query) {
-      imageContainer.innerHTML = '';
-      for(let i = 0; i < 9; i++) {
-        const img = document.createElement('img');
-        // Unsplash random query by appending &sig=index to force random images
-        img.src = `${apiUrl}${encodeURIComponent(query)}&sig=${Math.floor(Math.random()*1000 + i)}`;
-        img.alt = query + ' image ' + (i + 1);
-        imageContainer.appendChild(img);
-      }
-    }
-
-    searchButton.addEventListener('click', () => {
-      const query = searchInput.value.trim();
-      if(query.length > 0) {
-        loadImages(query);
-      }
-    });
-
-    searchInput.addEventListener('keypress', e => {
-      if(e.key === 'Enter') {
-        searchButton.click();
-      }
-    });
-  </script>
 </body>
 </html>
