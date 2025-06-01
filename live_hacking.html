@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🚀 LIVE HACKING SIMULATION</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+  body {
+    background: #000;
+    color: #33ff33;
+    font-family: 'Fira Mono', monospace;
+    margin: 0;
+    padding: 2rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .terminal {
+    max-width: 800px;
+    margin: auto;
+    background: #111;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 15px #0f0;
+    overflow: hidden;
+  }
+  .line {
+    white-space: pre-wrap;
+    line-height: 1.5;
+    font-size: 1.2rem;
+  }
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    background: #33ff33;
+    margin-left: 3px;
+    animation: blink 1s step-end infinite;
+    vertical-align: bottom;
+  }
+  @keyframes blink {
+    50% { background: transparent; }
+  }
+</style>
+</head>
+<body>
+  <div class="terminal" aria-label="Live hacking terminal simulation" role="region">
+    <div id="output" class="line"></div><div class="cursor"></div>
+  </div>
+
+<script>
+  const messages = [
+    '🚀 Bypassing Firewall... [DONE]',
+    '🚀 Injecting Epic Stats... [SUCCESS]',
+    '🚀 Drinking Coffee... [INFINITE LOOP]',
+    '🚀 Scanning Ports... [OPEN]',
+    '🚀 Loading Payload... [READY]',
+    '🚀 Establishing SSH Tunnel... [CONNECTED]',
+    '🚀 Uploading Kernel Module... [COMPLETE]',
+    '🚀 Accessing Root Shell... [GRANTED]',
+    '🚀 Exfiltrating Data... [IN PROGRESS]',
+    '🚀 Mission Complete. Stay Anonymous. Stay Awesome.',
+  ];
+
+  const output = document.getElementById('output');
+  let msgIndex = 0;
+  let charIndex = 0;
+
+  function typeWriter() {
+    if (msgIndex >= messages.length) {
+      msgIndex = 0;
+      charIndex = 0;
+      output.textContent = '';
+      setTimeout(typeWriter, 1000);
+      return;
+    }
+    const currentMsg = messages[msgIndex];
+    if (charIndex < currentMsg.length) {
+      output.textContent += currentMsg.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeWriter, 50);
+    } else {
+      output.textContent += '\n';
+      msgIndex++;
+      charIndex = 0;
+      setTimeout(typeWriter, 1000);
+    }
+  }
+
+  typeWriter();
+</script>
+</body>
+</html>
