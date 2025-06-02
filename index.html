@@ -7,12 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
-      padding: 40px 20px;
+      padding: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #ffffff, #d0e7ff, #a3d0ff);
-      color: #0b1f3f;
+      background-color: #0b0c10;
+      color: #e1e1e1;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    body > main {
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -22,35 +35,33 @@
       max-width: 720px;
       width: 100%;
       text-align: center;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
       padding: 30px;
-      box-shadow: 0 10px 25px rgba(0, 80, 160, 0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
     }
     h1 {
       font-weight: 700;
       font-size: 3rem;
       margin-bottom: 0.3em;
-      color: #002b5c;
+      color: #ffffff;
       letter-spacing: 2px;
-      user-select: none;
     }
     h2 {
       font-weight: 600;
       font-size: 1.75rem;
       margin-top: 2.5rem;
       margin-bottom: 1rem;
-      color: #003d82;
-      border-bottom: 2px solid #0053a0;
+      color: #00aaff;
+      border-bottom: 2px solid #0077cc;
       padding-bottom: 0.3em;
-      user-select: none;
     }
     p, li {
       font-weight: 400;
       font-size: 1.1rem;
       line-height: 1.5;
-      color: #1a2d58;
-      user-select: text;
+      color: #d0d0d0;
     }
     ul {
       list-style: none;
@@ -63,26 +74,22 @@
       font-size: 1.05rem;
     }
     a {
-      color: #004a99;
+      color: #40aaff;
       font-weight: 600;
       text-decoration: none;
       border-bottom: 1.5px solid transparent;
       transition: border-color 0.3s ease, color 0.3s ease;
-      cursor: pointer;
-      user-select: text;
     }
     a:hover, a:focus {
-      color: #0071ce;
-      border-color: #0071ce;
-      outline: none;
+      color: #60ccff;
+      border-color: #60ccff;
     }
     blockquote {
       font-style: italic;
-      color: #004080;
-      border-left: 4px solid #0071ce;
+      color: #a0e1ff;
+      border-left: 4px solid #60ccff;
       padding-left: 1rem;
       margin: 1.8rem 0;
-      user-select: text;
     }
     .btn-primary {
       background-color: #0053a0;
@@ -93,7 +100,6 @@
       font-size: 1.1rem;
       border: none;
       cursor: pointer;
-      user-select: none;
       transition: background-color 0.3s ease;
       display: inline-block;
       margin-top: 1rem;
@@ -101,18 +107,16 @@
     }
     .btn-primary:hover, .btn-primary:focus {
       background-color: #0071ce;
-      outline: none;
     }
     .symbol {
       display: inline-block;
       font-size: 1.3rem;
       margin-right: 6px;
       vertical-align: middle;
-      user-select: none;
     }
     .small-text {
       font-size: 0.9rem;
-      color: #004a99;
+      color: #99ccff;
       margin-top: -10px;
       margin-bottom: 20px;
     }
@@ -129,25 +133,24 @@
       height: auto;
       filter: grayscale(100%) opacity(0.6);
       transition: filter 0.3s ease;
-      user-select: none;
     }
     .sponsor-logo:hover, .sponsor-logo:focus {
       filter: none;
-      outline: none;
-      cursor: pointer;
       transform: scale(1.05);
       transition: transform 0.3s ease, filter 0.3s ease;
     }
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
+
   <main class="container" role="main" aria-label="Dukungan dan kontak / Support and contact">
     <h1>Kongali1720</h1>
 
     <section aria-labelledby="support-heading">
       <h2 id="support-heading"><span class="symbol">💡</span>Dukung Aku Tetap Berkarya<br /><small class="small-text">Support Me to Keep Creating</small></h2>
       <p>
-        <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button">
+        <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" rel="noopener noreferrer" class="btn-primary">
           ☕ Buy Me a Coffee via PayPal
         </a>
       </p>
@@ -176,7 +179,7 @@
         They are not different — they were born to teach the world about pure love and extraordinary patience.
       </blockquote>
       <p>
-        <a href="https://mydonation4ds.github.io/" target="_blank" rel="noopener noreferrer" class="btn-primary" role="button">
+        <a href="https://mydonation4ds.github.io/" target="_blank" rel="noopener noreferrer" class="btn-primary">
           Berdonasi Sekarang / Donate Now
         </a>
       </p>
@@ -184,12 +187,55 @@
 
     <section aria-label="Sponsor and payment partners" style="margin-top: 4rem;">
       <h2><span class="symbol">🤝</span>Partner dan Sponsor / Partners & Sponsors</h2>
-      <div class="sponsors" role="list" aria-label="Sponsor logos">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="sponsor-logo" role="listitem" tabindex="0" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo" role="listitem" tabindex="0" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="PayPal" class="sponsor-logo" role="listitem" tabindex="0" />
+      <div class="sponsors">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="sponsor-logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="sponsor-logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg" alt="PayPal" class="sponsor-logo" />
       </div>
     </section>
   </main>
+
+  <!-- Load particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: {
+          value: 0.3,
+          random: true
+        },
+        size: {
+          value: 3,
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ffffff",
+          opacity: 0.1,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.25 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
