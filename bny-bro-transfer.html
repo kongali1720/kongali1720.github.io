@@ -2,242 +2,240 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bank Negara Yoku ➜ Bank Rakyat Oneko | Simulasi Transfer Dana Antar Bank Lokal</title>
   <style>
-    :root {
-      --bni-red: #d50000;
-      --bni-orange: #ff6d00;
-      --bni-dark: #3e2723;
-      --bni-light: #ffccbc;
-    }
     body {
-      margin: 0; padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, var(--bni-red), var(--bni-orange));
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .container {
-      background: var(--bni-dark);
-      padding: 25px 35px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
-      max-width: 450px;
-      width: 100%;
+      font-family: 'Courier New', monospace;
+      background-color: #000;
+      color: #0f0;
+      padding: 20px;
+      margin: 0;
     }
     h1 {
-      margin-bottom: 25px;
       text-align: center;
-      font-weight: 700;
-      color: var(--bni-light);
-      text-shadow: 0 0 5px #ff6d00;
+      color: orange;
     }
-    input, button, select {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
+    label {
+      display: block;
+      margin-top: 10px;
     }
     input, select {
-      outline: none;
-      background: #4e342e;
-      color: var(--bni-light);
-    }
-    input::placeholder {
-      color: #ffccbccc;
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
     }
     button {
-      background: var(--bni-orange);
-      font-weight: 700;
-      color: var(--bni-dark);
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 8px rgba(255,109,0,0.6);
-    }
-    button:hover {
-      background-color: #ff3d00;
-      color: white;
-      box-shadow: 0 0 15px #ff3d00;
-    }
-    #output {
-      background: #3e2723;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      white-space: pre-wrap;
-      max-height: 200px;
-      overflow-y: auto;
-      display: none;
-      font-family: "Courier New", monospace;
-      color: #ffc107;
-      box-shadow: 0 0 10px #ff6d00;
-    }
-    .spinner {
-      border: 4px solid #ffccbc44;
-      border-top: 4px solid var(--bni-orange);
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 10px auto;
-      display: none;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-    .theme-toggle {
-      text-align: center;
       margin-top: 15px;
-      color: var(--bni-light);
-      cursor: pointer;
-      user-select: none;
+      padding: 10px;
+      width: 100%;
+      background-color: orange;
+      color: #000;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
-    .theme-toggle:hover {
-      color: #ffccbc;
+    pre {
+      background-color: #111;
+      padding: 15px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-top: 15px;
+      border: 1px solid #0f0;
     }
-    /* Light Theme */
-    body.light-theme {
-      background: linear-gradient(135deg, #ffd54f, #ffb300);
-      color: #3e2723;
+    #spinner {
+      display: none;
+      text-align: center;
+      font-weight: bold;
+      color: lime;
+      margin-top: 10px;
     }
-    body.light-theme .container {
-      background: #fff3e0;
-      color: #3e2723;
-      box-shadow: 0 0 15px #ffb300aa;
+    .light-theme {
+      background-color: #fff;
+      color: #000;
     }
-    body.light-theme input, body.light-theme select {
-      background: #ffecb3;
-      color: #3e2723;
+    .light-theme input, .light-theme select {
+      background-color: #eee;
+      color: #000;
+      border: 1px solid #333;
     }
-    body.light-theme input::placeholder {
-      color: #6d4c41cc;
+    .light-theme pre {
+      background-color: #f4f4f4;
+      color: #000;
+      border: 1px solid #333;
     }
-    body.light-theme button {
-      background: #ff6f00;
-      color: white;
-      box-shadow: 0 4px 8px #ff6f00aa;
+    .light-theme button {
+      background-color: #333;
+      color: #fff;
     }
-    body.light-theme button:hover {
-      background-color: #e65100;
-      box-shadow: 0 0 15px #e65100cc;
+    .history {
+      margin-top: 20px;
+      border-top: 1px solid lime;
+      padding-top: 10px;
     }
-    body.light-theme #output {
-      background: #fff3e0;
-      color: #bf360c;
-      box-shadow: 0 0 10px #ff6f00;
+    #qrcode {
+      margin-top: 15px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>💸 Bank Negara Yoku ➜ Bank Rakyat Oneko | Simulasi Transfer Dana Antar Bank Lokal</h1>
-    <input id="sender" placeholder="Nama Pengirim (BNY)" />
-    <input id="senderAcc" placeholder="No Rek BNY (10-12 digit)" />
-    <input id="saldo" type="number" placeholder="Saldo Tersedia" />
-    <input id="receiver" placeholder="Nama Penerima (BRO)" />
-    <input id="receiverAcc" placeholder="No Rek BRO (10-12 digit)" />
-    <input id="amount" type="number" placeholder="Jumlah Transfer (Rp)" />
-    <input id="branchCode" placeholder="Kode Cabang BRO" />
-    <input id="email" type="email" placeholder="Email Penerima (opsional)" />
-    
-    <button id="transferBtn">🚀 KIRIM SEKARANG</button>
-    <button id="printBtn">🧾 CETAK STRUK PDF</button>
+  <h1>💸 Bank Negara Yoku ➜ Bank Rakyat Oneko | Simulasi Transfer Dana Antar Bank Lokal 💸</h1>
 
-    <div class="spinner" id="spinner"></div>
-    <pre id="output"></pre>
+  <label for="noRek">Nomor Rekening Tujuan:</label>
+  <input type="text" id="noRek" placeholder="Contoh: 0529071234" />
 
-    <div class="theme-toggle" id="themeToggle">🌙 Ganti Tema Gelap/Terang</div>
+  <label for="nama">Nama Penerima:</label>
+  <input type="text" id="nama" placeholder="Contoh: Kongali1720" />
 
-    <h3>Riwayat Transfer:</h3>
-    <pre id="history" style="max-height:150px; overflow-y:auto; background:#4e342e; padding:10px; border-radius:8px; color:#fff3e0; font-family: monospace;"></pre>
+  <label for="jumlah">Jumlah (Rp):</label>
+  <input type="number" id="jumlah" placeholder="Contoh: 500000" />
+
+  <label for="email">Email Tujuan (opsional):</label>
+  <input type="email" id="email" placeholder="Contoh: contoh@email.com" />
+
+  <label for="metode">Metode Transfer:</label>
+  <select id="metode">
+    <option value="RTGS">RTGS</option>
+    <option value="SKN">SKN</option>
+    <option value="Online">Online</option>
+  </select>
+
+  <label for="pin">PIN (6 digit):</label>
+  <input type="password" id="pin" pattern="\\d{6}" maxlength="6" placeholder="******" />
+
+  <button id="transferBtn">KIRIM SEKARANG</button>
+  <div id="spinner">⏳ Memproses transaksi...</div>
+
+  <pre id="output" style="display:none;"></pre>
+
+  <div id="qrcode"></div>
+
+  <button id="printBtn">🖨️ Cetak Struk</button>
+  <button id="themeToggle">🌗 Ganti Tema</button>
+
+  <div class="history">
+    <h3>📜 Riwayat Transaksi:</h3>
+    <ul id="riwayatList" style="list-style:none; padding-left:0;"></ul>
   </div>
 
   <script>
-    // Fake AES encryption
-    function encryptFakeAES(text) {
-      return btoa(text).split("").reverse().join("");
-    }
-
-    function validAccount(acc) {
-      return /^[0-9]{10,12}$/.test(acc);
-    }
-
     const output = document.getElementById("output");
     const spinner = document.getElementById("spinner");
-    const historyBox = document.getElementById("history");
+    const riwayatList = document.getElementById("riwayatList");
+    const qrcodeDiv = document.getElementById("qrcode");
 
-    // Load history from localStorage
-    function loadHistory() {
-      let logs = [];
-      for(let i=0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if(key.startsWith("TX-")) {
-          logs.push(localStorage.getItem(key));
-        }
-      }
-      if(logs.length) {
-        historyBox.textContent = logs.join("\n\n");
-      } else {
-        historyBox.textContent = "Belum ada riwayat transfer.";
-      }
+    function generateTXID() {
+      return "BNYTX-" + Math.random().toString(36).substring(2, 10).toUpperCase();
     }
 
-    loadHistory();
+    function getBranchCode(rekening) {
+      return rekening.substring(0, 4);
+    }
+
+    function encryptData(data) {
+      return btoa(unescape(encodeURIComponent(data))).substring(0, 16) + "...";
+    }
 
     function showSpinner(show) {
       spinner.style.display = show ? "block" : "none";
     }
 
+    function loadHistory() {
+      riwayatList.innerHTML = "";
+      Object.keys(localStorage).sort().reverse().forEach(key => {
+        if (key.startsWith("BNYTX-")) {
+          const li = document.createElement("li");
+          li.textContent = key;
+          li.style.cursor = "pointer";
+          li.onclick = () => {
+            output.textContent = localStorage.getItem(key);
+            output.style.display = "block";
+          };
+          riwayatList.appendChild(li);
+        }
+      });
+    }
+
     function transfer() {
-      const sender = document.getElementById("sender").value.trim();
-      const senderAcc = document.getElementById("senderAcc").value.trim();
-      const saldo = parseInt(document.getElementById("saldo").value);
-      const receiver = document.getElementById("receiver").value.trim();
-      const receiverAcc = document.getElementById("receiverAcc").value.trim();
-      const amount = parseInt(document.getElementById("amount").value);
-      const branchCode = document.getElementById("branchCode").value.trim();
+      const noRek = document.getElementById("noRek").value.trim();
+      const nama = document.getElementById("nama").value.trim();
+      const amount = parseInt(document.getElementById("jumlah").value.trim());
       const email = document.getElementById("email").value.trim();
+      const metode = document.getElementById("metode").value;
+      const pin = document.getElementById("pin").value.trim();
 
-      if(!sender || !senderAcc || !saldo || !receiver || !receiverAcc || !amount || !branchCode){
-        output.style.display = "block";
-        output.textContent = "[✘] ERROR: Semua kolom wajib diisi!";
-        return;
-      }
-      if(!validAccount(senderAcc) || !validAccount(receiverAcc)){
-        output.style.display = "block";
-        output.textContent = "[✘] ERROR: Nomor rekening harus 10-12 digit angka!";
-        return;
-      }
-      if(saldo < amount){
-        output.style.display = "block";
-        output.textContent = "[✘] GAGAL: Saldo tidak mencukupi!";
+      if (!noRek || !nama || isNaN(amount) || amount <= 0 || !pin) {
+        alert("Semua data wajib diisi dengan benar!");
         return;
       }
 
-      output.style.display = "none";
+      if (!/^\d{6}$/.test(pin)) {
+        alert("PIN harus terdiri dari 6 digit angka!");
+        return;
+      }
+
       showSpinner(true);
+      output.style.display = "none";
+      qrcodeDiv.innerHTML = "";
 
       setTimeout(() => {
-        const now = new Date();
-        const timestamp = now.toLocaleString("id-ID");
-        const txid = "TX-" + now.getTime();
-        const encryptedData = encryptFakeAES(sender + receiver + amount + txid);
+        const txid = generateTXID();
+        const branchCode = getBranchCode(noRek);
+        const encryptedData = encryptData(`${noRek}|${nama}|${amount}`);
+        const now = new Date().toLocaleString("id-ID");
 
-        let log = `
-[•] TLS 1.3 Secure Connection Established
-[•] Data dienkripsi (AES Palsu)...
-[✓] Transfer diproses...
+        const log = `
+=== BNY BRO TRANSACTION ===
+🧾 TXID         : ${txid}
+📅 Tanggal      : ${now}
+🏦 Tujuan Rek   : ${noRek}
+👤 Nama         : ${nama}
+🏢 Kode Cabang  : ${branchCode}
+💰 Jumlah       : Rp${amount.toLocaleString("id-ID")}
+📧 Email Tujuan : ${email || "-"}
+🔐 Enkripsi     : ${encryptedData}
+🔄 Metode       : ${metode}
+=====================================
+        `.trim();
 
-===== BUKTI TRANSFER BNY ➜ BRO =====
-🆔 ID Transaksi : ${txid}
-🕒 Tanggal      : ${timestamp}
-📤 Dari         : ${sender} / ${senderAcc}
-📥 Kepada       : ${receiver} / ${receiverAcc}
-🏦 Cabang
+        output.textContent = log;
+        output.style.display = "block";
+        showSpinner(false);
+        localStorage.setItem(txid, log);
+        loadHistory();
+
+        // Generate QR Code using external service
+        const qrData = encodeURIComponent(log);
+        const qrImg = document.createElement("img");
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=150x150`;
+        qrImg.alt = "QR Code";
+        qrcodeDiv.appendChild(qrImg);
+      }, 1500);
+    }
+
+    function printPDF() {
+      const data = output.textContent.trim();
+      if(!data){
+        alert("Tidak ada data untuk dicetak!");
+        return;
+      }
+      const win = window.open('', '_blank');
+      win.document.write('<pre>' + data + '</pre>');
+      win.document.close();
+      win.print();
+    }
+
+    document.getElementById("transferBtn").onclick = transfer;
+    document.getElementById("printBtn").onclick = printPDF;
+    document.getElementById("themeToggle").onclick = () => {
+      document.body.classList.toggle("light-theme");
+    };
+
+    loadHistory();
+  </script>
+</body>
+</html>
