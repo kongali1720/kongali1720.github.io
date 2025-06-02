@@ -2,102 +2,235 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>BNY ➜ BRO | Simulasi Transfer Dana PRO</title>
+  <title>Bank Negara Yoku ➜ Bank Rakyat Oneko | Simulasi Transfer Dana Antar Bank Lokal</title>
   <style>
-    body {
-      background-color: black;
-      color: lime;
-      font-family: "Courier New", monospace;
-      padding: 20px;
+    :root {
+      --bni-red: #d50000;
+      --bni-orange: #ff6d00;
+      --bni-dark: #3e2723;
+      --bni-light: #ffccbc;
     }
-    h1 {
-      text-align: center;
-      color: cyan;
+    body {
+      margin: 0; padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bni-red), var(--bni-orange));
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .container {
-      max-width: 600px;
-      margin: auto;
-      background-color: #111;
-      padding: 20px;
-      border: 2px solid lime;
-      border-radius: 10px;
-    }
-    input, button {
+      background: var(--bni-dark);
+      padding: 25px 35px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      max-width: 450px;
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      background-color: #222;
-      color: lime;
-      border: 1px solid lime;
-      border-radius: 5px;
     }
-    .output {
-      white-space: pre-wrap;
-      margin-top: 20px;
-      border: 1px solid cyan;
-      padding: 15px;
-      display: none;
-      background-color: #000;
-    }
-    footer {
+    h1 {
+      margin-bottom: 25px;
       text-align: center;
-      color: gray;
-      margin-top: 40px;
+      font-weight: 700;
+      color: var(--bni-light);
+      text-shadow: 0 0 5px #ff6d00;
+    }
+    input, button, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    input, select {
+      outline: none;
+      background: #4e342e;
+      color: var(--bni-light);
+    }
+    input::placeholder {
+      color: #ffccbccc;
+    }
+    button {
+      background: var(--bni-orange);
+      font-weight: 700;
+      color: var(--bni-dark);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(255,109,0,0.6);
+    }
+    button:hover {
+      background-color: #ff3d00;
+      color: white;
+      box-shadow: 0 0 15px #ff3d00;
+    }
+    #output {
+      background: #3e2723;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+      font-family: "Courier New", monospace;
+      color: #ffc107;
+      box-shadow: 0 0 10px #ff6d00;
+    }
+    .spinner {
+      border: 4px solid #ffccbc44;
+      border-top: 4px solid var(--bni-orange);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .theme-toggle {
+      text-align: center;
+      margin-top: 15px;
+      color: var(--bni-light);
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+    .theme-toggle:hover {
+      color: #ffccbc;
+    }
+    /* Light Theme */
+    body.light-theme {
+      background: linear-gradient(135deg, #ffd54f, #ffb300);
+      color: #3e2723;
+    }
+    body.light-theme .container {
+      background: #fff3e0;
+      color: #3e2723;
+      box-shadow: 0 0 15px #ffb300aa;
+    }
+    body.light-theme input, body.light-theme select {
+      background: #ffecb3;
+      color: #3e2723;
+    }
+    body.light-theme input::placeholder {
+      color: #6d4c41cc;
+    }
+    body.light-theme button {
+      background: #ff6f00;
+      color: white;
+      box-shadow: 0 4px 8px #ff6f00aa;
+    }
+    body.light-theme button:hover {
+      background-color: #e65100;
+      box-shadow: 0 0 15px #e65100cc;
+    }
+    body.light-theme #output {
+      background: #fff3e0;
+      color: #bf360c;
+      box-shadow: 0 0 10px #ff6f00;
     }
   </style>
 </head>
 <body>
-  <h1>💸 Transfer Dana BNY ➜ BRO [PRO EDITION]</h1>
   <div class="container">
+    <h1>💸 Bank Negara Yoku ➜ Bank Rakyat Oneko | Simulasi Transfer Dana Antar Bank Lokal</h1>
     <input id="sender" placeholder="Nama Pengirim (BNY)" />
-    <input id="senderAcc" placeholder="No Rek BNY" />
+    <input id="senderAcc" placeholder="No Rek BNY (10-12 digit)" />
     <input id="saldo" type="number" placeholder="Saldo Tersedia" />
     <input id="receiver" placeholder="Nama Penerima (BRO)" />
-    <input id="receiverAcc" placeholder="No Rek BRO" />
+    <input id="receiverAcc" placeholder="No Rek BRO (10-12 digit)" />
     <input id="amount" type="number" placeholder="Jumlah Transfer (Rp)" />
     <input id="branchCode" placeholder="Kode Cabang BRO" />
+    <input id="email" type="email" placeholder="Email Penerima (opsional)" />
     
-    <button onclick="transfer()">🚀 KIRIM SEKARANG</button>
-    <button onclick="printPDF()">🧾 CETAK STRUK PDF</button>
+    <button id="transferBtn">🚀 KIRIM SEKARANG</button>
+    <button id="printBtn">🧾 CETAK STRUK PDF</button>
 
-    <div class="output" id="output"></div>
+    <div class="spinner" id="spinner"></div>
+    <pre id="output"></pre>
+
+    <div class="theme-toggle" id="themeToggle">🌙 Ganti Tema Gelap/Terang</div>
+
+    <h3>Riwayat Transfer:</h3>
+    <pre id="history" style="max-height:150px; overflow-y:auto; background:#4e342e; padding:10px; border-radius:8px; color:#fff3e0; font-family: monospace;"></pre>
   </div>
 
-  <footer>© 2025 Kongali1720 | Simulasi Transfer Dana Canggih</footer>
-
   <script>
+    // Fake AES encryption
     function encryptFakeAES(text) {
-      return btoa(text).split("").reverse().join(""); // Fake "AES" style
+      return btoa(text).split("").reverse().join("");
+    }
+
+    function validAccount(acc) {
+      return /^[0-9]{10,12}$/.test(acc);
+    }
+
+    const output = document.getElementById("output");
+    const spinner = document.getElementById("spinner");
+    const historyBox = document.getElementById("history");
+
+    // Load history from localStorage
+    function loadHistory() {
+      let logs = [];
+      for(let i=0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if(key.startsWith("TX-")) {
+          logs.push(localStorage.getItem(key));
+        }
+      }
+      if(logs.length) {
+        historyBox.textContent = logs.join("\n\n");
+      } else {
+        historyBox.textContent = "Belum ada riwayat transfer.";
+      }
+    }
+
+    loadHistory();
+
+    function showSpinner(show) {
+      spinner.style.display = show ? "block" : "none";
     }
 
     function transfer() {
-      const sender = document.getElementById("sender").value;
-      const senderAcc = document.getElementById("senderAcc").value;
+      const sender = document.getElementById("sender").value.trim();
+      const senderAcc = document.getElementById("senderAcc").value.trim();
       const saldo = parseInt(document.getElementById("saldo").value);
-      const receiver = document.getElementById("receiver").value;
-      const receiverAcc = document.getElementById("receiverAcc").value;
+      const receiver = document.getElementById("receiver").value.trim();
+      const receiverAcc = document.getElementById("receiverAcc").value.trim();
       const amount = parseInt(document.getElementById("amount").value);
-      const branchCode = document.getElementById("branchCode").value;
-      const output = document.getElementById("output");
+      const branchCode = document.getElementById("branchCode").value.trim();
+      const email = document.getElementById("email").value.trim();
 
-      if (!sender || !senderAcc || !saldo || !receiver || !receiverAcc || !amount || !branchCode) {
+      if(!sender || !senderAcc || !saldo || !receiver || !receiverAcc || !amount || !branchCode){
         output.style.display = "block";
-        output.innerText = "[✘] ERROR: Semua kolom wajib diisi!";
+        output.textContent = "[✘] ERROR: Semua kolom wajib diisi!";
+        return;
+      }
+      if(!validAccount(senderAcc) || !validAccount(receiverAcc)){
+        output.style.display = "block";
+        output.textContent = "[✘] ERROR: Nomor rekening harus 10-12 digit angka!";
+        return;
+      }
+      if(saldo < amount){
+        output.style.display = "block";
+        output.textContent = "[✘] GAGAL: Saldo tidak mencukupi!";
         return;
       }
 
-      if (saldo < amount) {
-        output.style.display = "block";
-        output.innerText = "[✘] GAGAL: Saldo tidak mencukupi!";
-        return;
-      }
+      output.style.display = "none";
+      showSpinner(true);
 
-      const now = new Date();
-      const timestamp = now.toLocaleString("id-ID");
-      const txid = "TX-" + now.getTime();
-      const encryptedData = encryptFakeAES(sender + receiver + amount + txid);
+      setTimeout(() => {
+        const now = new Date();
+        const timestamp = now.toLocaleString("id-ID");
+        const txid = "TX-" + now.getTime();
+        const encryptedData = encryptFakeAES(sender + receiver + amount + txid);
 
-      const log = `
+        let log = `
 [•] TLS 1.3 Secure Connection Established
 [•] Data dienkripsi (AES Palsu)...
 [✓] Transfer diproses...
@@ -107,31 +240,4 @@
 🕒 Tanggal      : ${timestamp}
 📤 Dari         : ${sender} / ${senderAcc}
 📥 Kepada       : ${receiver} / ${receiverAcc}
-🏦 Cabang BRO   : ${branchCode}
-💰 Jumlah       : Rp ${amount.toLocaleString("id-ID")}
-🔐 Enkripsi     : ${encryptedData.slice(0, 15)}...
-✅ STATUS       : BERHASIL
-====================================
-      `.trim();
-
-      output.style.display = "block";
-      output.innerText = log;
-
-      localStorage.setItem(txid, log); // Simpan log ke LocalStorage
-    }
-
-    function printPDF() {
-      const content = document.getElementById("output").innerText;
-      if (!content) {
-        alert("Belum ada struk untuk dicetak!");
-        return;
-      }
-
-      const win = window.open('', '', 'width=600,height=700');
-      win.document.write(`<pre>${content}</pre>`);
-      win.document.close();
-      win.print();
-    }
-  </script>
-</body>
-</html>
+🏦 Cabang
