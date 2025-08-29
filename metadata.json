@@ -1,0 +1,10 @@
+{
+  "name": "KongALI-COIN",
+  "symbol": "KA-C",
+  "uri": "https://kongali1720.github.io/metadata.json",
+  "image": "https://github.com/kongali1720/kongali1720.github.io/raw/main/kongalicoin.png",
+  "description": "Token resmi KongALI-COIN (KA-C) di jaringan Solana.",
+  "external_url": "https://kongali1720.github.io",
+  "seller_fee_basis_points": 500,
+  "creators": null
+}
