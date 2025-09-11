@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kongali-COIN Sepolia</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.1/dist/web3.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    img { width: 150px; margin-bottom: 20px; }
+    .token-info { font-size: 18px; margin: 5px 0; }
+    .block-info { margin-top: 30px; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+  <h1>Kongali-COIN Info (Sepolia)</h1>
+  <img id="token-logo" src="" alt="Token Logo">
+  <div class="token-info" id="token-name"></div>
+  <div class="token-info" id="token-symbol"></div>
+  <div class="token-info" id="token-decimals"></div>
+
+  <div class="block-info" id="latest-block"></div>
+
+  <script>
+    // ===== TOKEN DATA =====
+    const tokenData = {
+      decimals: 18,
+      logo: "https://github.com/kongali1720/kongali1720.github.io/blob/main/kongalicoin.png?raw=true",
+      name: "Kongali-COIN",
+      symbol: "KA-C"
+    };
+
+    document.getElementById('token-logo').src = tokenData.logo;
+    document.getElementById('token-name').textContent = "Name: " + tokenData.name;
+    document.getElementById('token-symbol').textContent = "Symbol: " + tokenData.symbol;
+    document.getElementById('token-decimals').textContent = "Decimals: " + tokenData.decimals;
+
+    // ===== CONNECT TO SEPOLIA =====
+    const web3 = new Web3('https://sepolia.infura.io/v3/a7858512c2ba45d188a531319bba17f0'); // ganti dengan project ID-mu
+
+    async function getLatestBlock() {
+      try {
+        const latest = await web3.eth.getBlock('latest');
+        document.getElementById('latest-block').innerHTML = `
+          <strong>Latest Sepolia Block:</strong><br>
+          Number: ${latest.number}<br>
+          Hash: ${latest.hash}<br>
+          Transactions: ${latest.transactions.length}
+        `;
+      } catch (err) {
+        document.getElementById('latest-block').textContent = "Failed to connect to Sepolia: " + err.message;
+      }
+    }
+
+    getLatestBlock();
+  </script>
+
+</body>
+</html>
