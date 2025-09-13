@@ -1,220 +1,656 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ANAK CERIA by KONGALI1720</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 40px 20px;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #ffffff, #d0e7ff, #a3d0ff);
-      color: #0b1f3f;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 900px;
-      width: 100%;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.9);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0, 80, 160, 0.3);
-      color: white;
-    }
-    iframe {
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    h1 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #39ff14;
-      letter-spacing: 2px;
-    }
-    h2 {
-      font-weight: 600;
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #39ff14;
-    }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-    blockquote {
-      font-style: italic;
-      border-left: 4px solid #39ff14;
-      padding-left: 1rem;
-      margin: 1.8rem 0;
-      color: #ff69b4;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kongali1720 | Berbagi Kasih untuk Anak-anak Down Syndrome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/ds-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .social-button {
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 4px;
+        }
+        .social-button:hover {
+            transform: scale(1.05);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        .connect-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .donor-card {
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(255, 255, 255, 0.9));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .whatsapp-profile-modal {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 1001;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            width: 280px;
+        }
+        .whatsapp-profile-modal.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .whatsapp-profile-modal::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 25px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+        .whatsapp-expanded {
+            animation: none !important;
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border-radius: 18px;
+            margin: 8px 0;
+        }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #999;
+            margin: 0 2px;
+            animation: typing 1.5s infinite;
+        }
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+        .online-status {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: #25D366;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
-  <main class="container" role="main">
-    <h1>ANAK CERIA by KONGALI1720</h1>
+    <nav class="fixed top-0 w-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-sm z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-center space-x-4">
+                <button onclick="showSection('home')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold ring-2 ring-white">
+                    🏠 HOME
+                </button>
+                <button onclick="showSection('donasi')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
+                    💝 DONASI
+                </button>
+                <button onclick="showSection('donatur')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
+                    👥 DONATUR
+                </button>
+                <button onclick="showSection('kontak')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
+                    📞 KONTAK
+                </button>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Video -->
-    <section aria-labelledby="video-heading">
-      <h2 id="video-heading">🎬 Video Inspirasi</h2>
-      <iframe width="100%" height="400" 
-        src="https://www.youtube.com/embed/TguP31-1gnQ" 
-        frameborder="0" allowfullscreen>
-      </iframe>
-      <p>
-        Video ini menghadirkan semangat dan keceriaan yang tulus.  
-        "Anak Ceria" adalah karya sederhana namun penuh makna, diciptakan untuk menyebarkan senyum dan inspirasi.
-      </p>
-    </section>
+    <header class="text-white py-16 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+                Kongali1720
+            </h1>
+            <p class="text-xl md:text-2xl font-light drop-shadow-md">
+                Berbagi Kasih untuk Anak-anak Down Syndrome
+            </p>
+            <div class="mt-8">
+                <div class="inline-block bg-white bg-opacity-20 rounded-full px-6 py-2">
+                    <span class="text-sm font-medium">💝 Spreading Love & Care</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- Support Section Replaced -->
-    <h3 align="center" style="color:#39ff14; font-size:1.5rem;">
-      💡 ☕ Traktir Kopi & Nasi Padang / Nasi Gorengnya ya cuy! 😄
-    </h3>
+    <div id="home" class="section active">
+    <main class="container mx-auto px-4 py-16">
+        <section class="mb-16">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                    🌟 Misi Kami
+                </h2>
+                <p class="text-lg text-gray-600 text-center leading-relaxed">
+                    Kami berkomitmen untuk berbagi kasih sayang, dukungan, dan menciptakan kesadaran 
+                    tentang anak-anak dengan Down Syndrome. Setiap anak adalah istimewa dan berhak 
+                    mendapatkan cinta serta perhatian yang tulus.
+                </p>
+            </div>
+        </section>
 
-    <div align="center">
-      <p style="color:#ffffff; font-size:1.1rem;">
-        Dukung terus biar semangat bikin karya edukatif lainnya...  
-        Keep supporting so I stay motivated to create more educational works!
-      </p>
+        <section class="mb-16">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                    🎥 Video Inspirasi
+                </h2>
+                <div class="flex justify-center">
+                    <div class="w-full max-w-4xl">
+                        <div class="relative pb-9/16 h-0 overflow-hidden rounded-lg shadow-lg">
+                            <iframe 
+                                src="https://www.youtube.com/embed/TguP31-1gnQ" 
+                                class="absolute top-0 left-0 w-full h-full"
+                                style="aspect-ratio: 16/9; height: 400px;"
+                                frameborder="0" 
+                                allowfullscreen
+                                title="Video Kongali1720 - Berbagi Kasih untuk Anak Down Syndrome">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <a href="https://www.paypal.com/paypalme/bungtempong99" target="_blank" style="text-decoration:none;">
-        <img 
-          src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-☕-FF6600?style=for-the-badge&logo=paypal&logoColor=white" 
-          alt="Buy Me a Coffee" 
-          style="margin-top:10px;"
-        />
-      </a>
+        <section class="mb-16">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                    📸 Galeri Kegiatan
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="text-center">
+                        <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
+                            <img 
+                                src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS.png" 
+                                alt="Down Syndrome Awareness" 
+                                class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            >
+                        </a>
+                        <p class="mt-4 text-gray-600 font-medium">Awareness & Understanding</p>
+                    </div>
+                    <div class="text-center">
+                        <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
+                            <img 
+                                src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS01.png" 
+                                alt="Supporting Children with Down Syndrome" 
+                                class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                            >
+                        </a>
+                        <p class="mt-4 text-gray-600 font-medium">Care & Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <p style="color:#39ff14; font-size:1rem; margin-top:8px;">
-        Support with ☕ so I can buy 🍜 and keep being 🧠!
-      </p>
+        <section class="mb-16">
+            <div class="connect-section rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-3xl font-bold mb-8 text-center" style="color: #39ff14;">
+                    📫 Let's Connect together
+                </h2>
+                
+                <p align="center" class="mb-4">
+                  <a href="https://github.com/kongali1720" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/GitHub-kongali1720-39ff14?style=for-the-badge&logo=github&logoColor=white" height="35" alt="GitHub">
+                  </a>
+                  <a href="mailto:admin@kongali1720.com" class="social-button">
+                    <img src="https://img.shields.io/badge/Email-admin@kongali1720.com-DAF7A6?style=for-the-badge&logo=gmail&logoColor=white" height="35" alt="Email">
+                  </a>
+                  <a href="https://discord.gg/dXM88zFU" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/Discord-dXM88zFU-7289DA?style=for-the-badge&logo=discord&logoColor=white" height="35" alt="Discord">
+                  </a>
+                </p>
+
+                <p align="center" class="mb-4">
+                  <a href="https://instagram.com/kongali1720" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/Instagram-kongali1720-E4405F?style=for-the-badge&logo=instagram&logoColor=white" height="35" alt="Instagram">
+                  </a>
+                  <a href="https://twitter.com/kongali1720" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/Twitter-kongali1720-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" height="35" alt="Twitter">
+                  </a>
+                  <a href="https://kongali1720.github.io" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/Website-Interactive-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" height="35" alt="Website">
+                  </a>
+                </p>
+
+                <p align="center" class="mb-4">
+                  <a href="https://portfolio.kongali1720.com" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/Portfolio-View-9C27B0?style=for-the-badge&logo=portfolio&logoColor=white" height="35" alt="Portfolio">
+                  </a>
+                  <a href="https://wa.me/447440014278" target="_blank" class="social-button">
+                    <img src="https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" height="35" alt="WhatsApp">
+                  </a>
+                </p>
+            </div>
+        </section>
+    </main>
     </div>
 
-    <hr style="margin:2rem 0; border:1px solid #39ff14;">
-
-    <!-- Connect -->
-    <h2 align="center" style="color:#39ff14;">📫 Let’s Connect together</h2>
-    <p align="center">
-      <a href="https://github.com/kongali1720" target="_blank">
-        <img src="https://img.shields.io/badge/GitHub-kongali1720-39ff14?style=for-the-badge&logo=github&logoColor=white" height="35">
-      </a>
-      <a href="mailto:admin@kongali1720.com">
-        <img src="https://img.shields.io/badge/Email-admin@kongali1720.com-DAF7A6?style=for-the-badge&logo=gmail&logoColor=white" height="35">
-      </a>
-      <a href="https://discord.gg/dXM88zFU" target="_blank">
-        <img src="https://img.shields.io/badge/Discord-kongali1720_32854-7289DA?style=for-the-badge&logo=discord&logoColor=white" height="35">
-      </a>
-      <a href="https://www.instagram.com/kongali1720/" target="_blank">
-        <img src="https://img.shields.io/badge/Instagram-kongali-E1306C?style=for-the-badge&logo=instagram&logoColor=white" height="35">
-      </a>
-    </p>
-
-    <p align="center">
-      <a href="https://x.com/Kongali1720" target="_blank">
-        <img src="https://img.shields.io/badge/X-@KongAli50422468-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" height="35">
-      </a>
-      <a href="https://younext.cloud" target="_blank">
-        <img src="https://img.shields.io/badge/Web-Interactive-younext?style=for-the-badge&logo=web&logoColor=white" height="35">
-      </a>
-      <a href="https://kongali1720.com" target="_blank">
-        <img src="https://img.shields.io/badge/Portfolio-kongali1720-FF69B4?style=for-the-badge&logo=portfolio&logoColor=white" height="35">
-      </a>
-      <a href="https://wa.me/447440014278" target="_blank">
-        <img src="https://img.shields.io/badge/WhatsApp-+44_7440014278-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" height="35">
-      </a>
-    </p>
-
-    <hr style="margin:2rem 0; border:1px solid #ff69b4;">
-
-    <!-- Humanity Mode -->
-    <h3 align="center" style="color:#ff69b4;">❤️ 💻 INITIATING HUMANITY MODE... for Down Syndrome ❤️</h3>
-
-    <div align="center">
-      <table style="margin: 0 auto; border-collapse: collapse; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden;">
-        <thead style="background-color:#ff69b4; color:white;">
-          <tr>
-            <th style="padding: 12px 25px; font-size: 18px;">Item</th>
-            <th style="padding: 12px 25px; font-size: 18px;">Keterangan / Description</th>
-          </tr>
-        </thead>
-        <tbody style="background-color:#1a1a1a; color:#39ff14;">
-          <tr>
-            <td style="padding: 12px 25px;">🎯 Target</td>
-            <td style="padding: 12px 25px;">Anak-anak Pejuang Down Syndrome / Kids with Down Syndrome</td>
-          </tr>
-          <tr>
-            <td style="padding: 12px 25px;">📡 Status</td>
-            <td style="padding: 12px 25px;">Butuh Dukungan / Needs Support</td>
-          </tr>
-          <tr>
-            <td style="padding: 12px 25px;">🧠 Response</td>
-            <td style="padding: 12px 25px;">Buka Hati + Klik Link = Satu Senyum Baru / Open Heart + Click Link = One New Smile</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p align="center" style="margin-top:15px; color:white; font-size:1rem;">
-        Mereka bukan berbeda — mereka dilahirkan untuk mengajarkan dunia tentang cinta yang murni dan kesabaran yang luar biasa.<br>
-        They are not different — they were born to teach the world pure love and extraordinary patience.
-      </p>
-
-      <p align="center" style="margin-top: 15px;">
-        <a href="https://mydonation4ds.github.io/" target="_blank" style="display: inline-block; text-decoration:none;">
-          <img 
-            src="https://img.shields.io/badge/SUPPORT--NOW-%23FF6600?style=for-the-badge&logo=heart&logoColor=white&labelColor=FF6600&color=FF4500&logoWidth=15" 
-            alt="Support Now" 
-            style="height: 40px;"
-          />
-        </a>
-      </p>
+    <div id="donasi" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    💝 Donasi untuk Anak-anak Down Syndrome
+                </h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg text-gray-600 mb-6">
+                        Bantuan Anda sangat berarti untuk mendukung anak-anak dengan Down Syndrome. 
+                        Setiap kontribusi akan membantu mereka mendapatkan pendidikan, terapi, dan dukungan yang mereka butuhkan.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">💰 Donasi Tunai</h3>
+                        <p class="text-gray-600 mb-4">Rekening Bank untuk donasi:</p>
+                        <div class="bg-white p-4 rounded border">
+                            <p class="font-semibold">Bank BCA</p>
+                            <p>No. Rek: 0860724537</p>
+                            <p>A.n: Murni Purnama S</p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">🎁 Donasi Barang</h3>
+                        <p class="text-gray-600 mb-4">Kami menerima donasi berupa:</p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Alat terapi dan edukasi</li>
+                            <li>Buku dan mainan edukatif</li>
+                            <li>Pakaian anak</li>
+                            <li>Perlengkapan sekolah</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- Payment Logos -->
-    <section align="center">
-      <h2 style="margin-bottom: 15px; color: #0070f3;">💳 Dukungan Pembayaran</h2>
-      <table align="center" style="margin: 0 auto; border-collapse: collapse; border-radius: 8px; overflow: hidden;">
-        <thead style="background-color: #0070f3; color: white;">
-          <tr>
-            <th style="padding: 10px 20px;">Visa</th>
-            <th style="padding: 10px 20px;">Mastercard</th>
-            <th style="padding: 10px 20px;">PayPal</th>
-          </tr>
-        </thead>
-        <tbody style="background-color: #f9f9f9;">
-          <tr>
-            <td style="padding: 10px;">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Visa_Logo.png/120px-Visa_Logo.png" alt="Visa" width="90" />
-            </td>
-            <td style="padding: 10px;">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/120px-Mastercard-logo.svg.png" alt="Mastercard" width="90" />
-            </td>
-            <td style="padding: 10px;">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/120px-PayPal_logo.svg.png" alt="PayPal" width="90" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <div id="donatur" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    👥 Daftar Donatur
+                </h2>
+                <p class="text-center text-lg text-gray-600 mb-8">
+                    Terima kasih kepada para donatur yang telah berkontribusi untuk anak-anak Down Syndrome
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="donor-card p-6 rounded-lg card-hover">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">🌟 Donatur Utama</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• Budi Santoso</li>
+                            <li>• Sari Wijaya</li>
+                            <li>• PT. Kasih Sayang</li>
+                            <li>• Yayasan Peduli</li>
+                            <li>• Ahmad Rahman</li>
+                        </ul>
+                    </div>
+                    <div class="donor-card p-6 rounded-lg card-hover">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">💚 Donatur Reguler</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• Maya Indah</li>
+                            <li>• Keluarga Tanoto</li>
+                            <li>• CV. Bahagia</li>
+                            <li>• Ibu Ratna</li>
+                            <li>• Pak Joko</li>
+                            <li>• Dewi Lestari</li>
+                            <li>• Komunitas Berbagi</li>
+                        </ul>
+                    </div>
+                    <div class="donor-card p-6 rounded-lg card-hover">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">🤝 Donatur Barang</h3>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>• Toko Mainan Anak</li>
+                            <li>• Perpustakaan Kota</li>
+                            <li>• Sekolah Harapan</li>
+                            <li>• Keluarga Hartono</li>
+                            <li>• Klub Motor Peduli</li>
+                            <li>• Ibu-ibu PKK RT 05</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 italic">
+                        "Setiap nama di sini adalah bukti kebaikan dan kepedulian terhadap anak-anak istimewa kita"
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    <p align="center" style="margin-top: 15px;">
-      Kalau project ini bantu kamu, jangan lupa kasih bintang ⭐ dan share ke teman-teman!<br>
-      Follow <a href="https://twitter.com/kongali1720" target="_blank">@kongali1720</a> untuk diskusi & update seru 🔥
-    </p>
+    <div id="kontak" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    📞 Hubungi Kami
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <a href="tel:+447440014278" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fas fa-phone text-green-500 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Telepon</h3>
+                                <p class="text-gray-600">+44 7440014278</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/447440014278" target="_blank" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">WhatsApp</h3>
+                                <p class="text-gray-600">+44 7440014278</p>
+                            </div>
+                        </a>
+                        
+                        <a href="mailto:admin@kongali1720.com" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fas fa-envelope text-blue-500 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Email</h3>
+                                <p class="text-gray-600">admin@kongali1720.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/kongali1720" target="_blank" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fab fa-github text-gray-800 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">GitHub</h3>
+                                <p class="text-gray-600">kongali1720</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <a href="https://kongali1720.github.io" target="_blank" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fas fa-globe text-orange-500 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Website</h3>
+                                <p class="text-gray-600">kongali1720.github.io</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://younext.cloud" target="_blank" class="flex items-center space-x-4">
+                            <div>
+                                <i class="fas fa-cloud text-cyan-500 text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">Cloud Platform</h3>
+                                <p class="text-gray-600">Younext.cloud</p>
+                            </div>
+                        </a>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+                            <h3 class="font-bold text-green-800 mb-2">💬 Tim Call Center</h3>
+                            <p class="text-gray-600 mb-4">Kami siap membantu Anda 24/7</p>
+                            <img src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/call_center.jpg" 
+                                alt="Call Center Team" 
+                                class="w-full h-32 object-cover rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    <p align="center" style="margin-top: 10px;">
-      <a href="https://twitter.com/kongali1720" target="_blank">
-        <img src="https://img.shields.io/twitter/follow/kongali1720?style=social" alt="Twitter Follow" />
-      </a>
-    </p>
-  </main>
+    <div class="whatsapp-widget" id="whatsappWidget">
+        <div onclick="toggleWhatsAppProfile()" 
+            class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center space-x-2 cursor-pointer">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            <div class="hidden md:block">
+                <div class="text-xs font-semibold">Hubungi Kami</div>
+                <div class="text-xs">Chat WhatsApp</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whatsapp-profile-modal" id="whatsappModal">
+        <div class="p-4">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/call_center.jpg" 
+                                alt="Call Center Team" 
+                                class="w-12 h-12 rounded-full object-cover">
+                        <div class="online-status"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">Kongali1720 Support</h3>
+                        <p class="text-xs text-green-600">Online sekarang</p>
+                    </div>
+                </div>
+                <button onclick="closeWhatsAppProfile()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-3 mb-4 max-h-32 overflow-y-auto">
+                <div class="text-xs text-gray-500 text-center mb-2">Hari ini</div>
+                <div class="bg-white rounded-lg p-2 mb-2 text-sm shadow-sm">
+                    👋 Halo! Selamat datang di Kongali1720
+                </div>
+                <div class="bg-white rounded-lg p-2 mb-2 text-sm shadow-sm">
+                    Kami siap membantu Anda dengan pertanyaan tentang donasi atau program kami untuk anak-anak Down Syndrome 💝
+                </div>
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <span class="text-xs text-gray-500 ml-2">sedang mengetik...</span>
+                </div>
+            </div>
+            
+            <div class="space-y-2">
+                <a href="https://wa.me/447440014278?text=Halo,%20saya%20ingin%20bertanya%20tentang%20program%20donasi%20Kongali1720" 
+                    target="_blank" 
+                    class="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-medium flex items-center justify-center space-x-2 transition-colors">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat Sekarang</span>
+                </a>
+                <button onclick="closeWhatsAppProfile()" 
+                        class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black bg-opacity-80 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Kongali1720</h3>
+            <p class="text-gray-300 mb-6">
+                Bersama kita wujudkan dunia yang lebih inklusif untuk anak-anak istimewa
+            </p>
+            <div class="border-t border-gray-600 pt-6">
+                <p class="text-sm text-gray-400">
+                    © 2024 Kongali1720. Made with ❤️ for children with Down Syndrome.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let whatsappModalVisible = false;
+        let autoShowTimer;
+        
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Update navigation buttons
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(button => {
+                button.classList.remove('ring-2', 'ring-white');
+            });
+            
+            // Add active state to clicked button
+            event.target.classList.add('ring-2', 'ring-white');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function toggleWhatsAppProfile() {
+            const modal = document.getElementById('whatsappModal');
+            const widget = document.getElementById('whatsappWidget');
+            
+            if (!whatsappModalVisible) {
+                showWhatsAppProfile();
+            } else {
+                closeWhatsAppProfile();
+            }
+        }
+        
+        function showWhatsAppProfile() {
+            const modal = document.getElementById('whatsappModal');
+            const widget = document.getElementById('whatsappWidget');
+            
+            modal.classList.add('show');
+            widget.classList.add('whatsapp-expanded');
+            whatsappModalVisible = true;
+            
+            // Auto close after 8 seconds
+            clearTimeout(autoShowTimer);
+            autoShowTimer = setTimeout(() => {
+                closeWhatsAppProfile();
+            }, 8000);
+        }
+        
+        function closeWhatsAppProfile() {
+            const modal = document.getElementById('whatsappModal');
+            const widget = document.getElementById('whatsappWidget');
+            
+            modal.classList.remove('show');
+            widget.classList.remove('whatsapp-expanded');
+            whatsappModalVisible = false;
+            clearTimeout(autoShowTimer);
+        }
+        
+        // Auto show WhatsApp profile randomly
+        function scheduleRandomWhatsAppShow() {
+            // Show between 10-30 seconds randomly
+            const randomTime = Math.random() * 20000 + 10000;
+            setTimeout(() => {
+                if (!whatsappModalVisible) {
+                    showWhatsAppProfile();
+                }
+                // Schedule next random show
+                scheduleRandomWhatsAppShow();
+            }, randomTime);
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('whatsappModal');
+            const widget = document.getElementById('whatsappWidget');
+            
+            if (whatsappModalVisible && 
+                !modal.contains(event.target) && 
+                !widget.contains(event.target)) {
+                closeWhatsAppProfile();
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.nav-button').classList.add('ring-2', 'ring-white');
+            
+            // Start random WhatsApp show after 15 seconds
+            setTimeout(() => {
+                scheduleRandomWhatsAppShow();
+            }, 15000);
+        });
+    </script>
 </body>
 </html>
