@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -72,9 +73,9 @@
             100% { transform: scale(1); }
         }
         .donor-card {
-            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(255, 255, 255, 0.9));
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(255, 255, 255, 0.9));
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(57, 255, 20, 0.3);
+            border: 1px solid rgba(30, 64, 175, 0.3);
         }
         .section {
             display: none;
@@ -100,6 +101,68 @@
             opacity: 1;
             transform: translateY(0);
             pointer-events: all;
+        }
+        @media (max-width: 768px) {
+            .whatsapp-profile-modal {
+                width: calc(100vw - 30px);
+                right: 15px;
+                bottom: 90px;
+            }
+            body {
+                background-attachment: scroll;
+            }
+            .nav-button {
+                font-size: 11px !important;
+                padding: 6px 8px !important;
+                margin: 1px;
+            }
+            nav {
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+            .glass-card {
+                margin: 8px;
+                padding: 12px;
+            }
+            .card-hover {
+                margin-bottom: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-button {
+                font-size: 9px !important;
+                padding: 4px 6px !important;
+            }
+            .whatsapp-widget {
+                bottom: 10px;
+                right: 10px;
+            }
+            .container {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .hero-section {
+                padding-top: 120px;
+            }
+            .section {
+                padding: 15px 0;
+            }
+            .card-hover {
+                padding: 15px !important;
+                margin: 8px 0;
+            }
+            .stats-container {
+                gap: 10px;
+            }
+            .stats-item {
+                padding: 12px 8px !important;
+            }
+        }
+        @media (max-width: 360px) {
+            .nav-button {
+                font-size: 8px !important;
+                padding: 3px 5px !important;
+            }
         }
         .whatsapp-profile-modal::before {
             content: '';
@@ -159,22 +222,279 @@
             border: 2px solid white;
             border-radius: 50%;
         }
+        
+        /* Tambahan styling dari script pertama - Efek transisi tambahan */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 0.8s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Efek glow untuk tombol khusus */
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        /* Styling tambahan untuk hero section */
+        .hero-text {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        /* Responsive video container */
+        .video-responsive {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Progress bar untuk loading */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #39ff14, #00ff00);
+            transition: width 0.3s ease;
+            z-index: 9999;
+        }
+        
+        /* Animasi untuk counter */
+        .counter {
+            font-weight: bold;
+            color: #39ff14;
+        }
+        
+        /* Styling untuk testimonial section */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-left: 4px solid #39ff14;
+        }
+        
+        /* Floating action button styles */
+        .floating-action {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            z-index: 999;
+            background: linear-gradient(135deg, #39ff14, #00ff00);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.4);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-action:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(57, 255, 20, 0.6);
+        }
+        
+        /* Newsletter section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(255, 255, 255, 0.95));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(57, 255, 20, 0.3);
+        }
+        
+        /* Stats counter section */
+        .stats-section {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+        
+        .stats-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #39ff14;
+            display: block;
+        }
+        
+        .stats-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Blog section */
+        .blog-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #39ff14;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: #39ff14;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        /* Partnership section */
+        .partnership-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .partnership-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* Achievement badges */
+        .achievement-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Call to action section */
+        .cta-section {
+            background: linear-gradient(135deg, #39ff14, #00ff00);
+            color: white;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #39ff14;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Bar -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Floating Action Button - Scroll to Top -->
+    <div class="floating-action" onclick="scrollToTop()" title="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <nav class="fixed top-0 w-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-sm z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-center space-x-4">
-                <button onclick="showSection('home')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold ring-2 ring-white">
+        <div class="container mx-auto px-2 md:px-4 py-3 md:py-4">
+            <!-- Mobile Menu Toggle -->
+            <div class="md:hidden flex justify-between items-center mb-2">
+                <h3 class="text-white font-bold text-lg">Kongali1720</h3>
+                <button onclick="toggleMobileMenu()" class="text-white p-2">
+                    <i id="menuIcon" class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="md:flex justify-center flex-wrap gap-2 md:space-x-4 hidden">
+                <button onclick="showSection('home')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold ring-2 ring-white text-xs md:text-base">
                     🏠 HOME
                 </button>
-                <button onclick="showSection('donasi')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
-                    💝 DONASI
+                <button onclick="showSection('about')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
+                    ℹ️ TENTANG
                 </button>
-                <button onclick="showSection('donatur')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
-                    👥 DONATUR
+                <button onclick="showSection('program')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
+                    📋 PROGRAM
                 </button>
-                <button onclick="showSection('kontak')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold">
+                <button onclick="showSection('donasi')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
+                    💝 SUPPORT
+                </button>
+                <button onclick="showSection('donatur')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
+                    👥 SUPPORTER
+                </button>
+                <button onclick="showSection('berita')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
+                    📰 BERITA
+                </button>
+                <button onclick="showSection('kontak')" class="nav-button bg-blue-500 hover:bg-blue-600 text-white px-3 md:px-6 py-2 rounded-lg font-semibold text-xs md:text-base">
                     📞 KONTAK
                 </button>
             </div>
@@ -182,11 +502,11 @@
     </nav>
 
     <header class="text-white py-16 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg hero-text bounce-in">
                 Kongali1720
             </h1>
-            <p class="text-xl md:text-2xl font-light drop-shadow-md">
+            <p class="text-xl md:text-2xl font-light drop-shadow-md hero-text">
                 Berbagi Kasih untuk Anak-anak Down Syndrome
             </p>
             <div class="mt-8">
@@ -194,122 +514,346 @@
                     <span class="text-sm font-medium">💝 Spreading Love & Care</span>
                 </div>
             </div>
+            <!-- Stats Preview -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                <div class="stats-item bg-black bg-opacity-50 rounded-lg p-4">
+                    <span class="stats-number counter" data-target="500">0</span>
+                    <span class="stats-label block">Anak Terbantu</span>
+                </div>
+                <div class="stats-item bg-black bg-opacity-50 rounded-lg p-4">
+                    <span class="stats-number counter" data-target="50">0</span>
+                    <span class="stats-label block">Supporter Aktif</span>
+                </div>
+                <div class="stats-item bg-black bg-opacity-50 rounded-lg p-4">
+                    <span class="stats-number counter" data-target="25">0</span>
+                    <span class="stats-label block">Program Berjalan</span>
+                </div>
+                <div class="stats-item bg-black bg-opacity-50 rounded-lg p-4">
+                    <span class="stats-number counter" data-target="5">0</span>
+                    <span class="stats-label block">Tahun Pengalaman</span>
+                </div>
+            </div>
         </div>
     </header>
 
     <div id="home" class="section active">
-    <main class="container mx-auto px-4 py-16">
-        <section class="mb-16">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
-                    🌟 Misi Kami
-                </h2>
-                <p class="text-lg text-gray-600 text-center leading-relaxed">
-                    Kami berkomitmen untuk berbagi kasih sayang, dukungan, dan menciptakan kesadaran 
-                    tentang anak-anak dengan Down Syndrome. Setiap anak adalah istimewa dan berhak 
-                    mendapatkan cinta serta perhatian yang tulus.
-                </p>
-            </div>
-        </section>
+        <main class="container mx-auto px-4 py-16">
+            <section class="mb-16 fade-in">
+                <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                        🌟 Misi Kami
+                    </h2>
+                    <p class="text-lg text-gray-600 text-center leading-relaxed">
+                        Kami berkomitmen untuk berbagi kasih sayang, dukungan, dan menciptakan kesadaran 
+                        tentang anak-anak dengan Down Syndrome dan anak anak berkebutuhan khusus juga. Setiap anak adalah istimewa dan berhak 
+                        mendapatkan cinta serta perhatian yang tulus.
+                    </p>
+                </div>
+            </section>
 
-        <section class="mb-16">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                    🎥 Video Inspirasi
+            <section class="mb-16 fade-in">
+                <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                        🎥 Video Inspirasi
+                    </h2>
+                    <div class="flex justify-center">
+                        <div class="w-full max-w-4xl">
+                            <div class="video-responsive">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/TguP31-1gnQ" 
+                                    frameborder="0" 
+                                    allowfullscreen
+                                    title="Video Kongali1720 - Berbagi Kasih untuk Anak Down Syndrome">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16 fade-in">
+                <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                        📸 Galeri Kegiatan
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
+                                <img 
+                                    src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS.png" 
+                                    alt="Down Syndrome Awareness" 
+                                    class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                                >
+                            </a>
+                            <p class="mt-4 text-gray-600 font-medium">Awareness & Understanding</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
+                                <img 
+                                    src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS01.png" 
+                                    alt="Supporting Children with Down Syndrome" 
+                                    class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                                >
+                            </a>
+                            <p class="mt-4 text-gray-600 font-medium">Care & Support</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="mb-16 fade-in">
+                <div class="newsletter-section rounded-lg shadow-lg p-8 card-hover">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                        📧 Berlangganan Newsletter
+                    </h2>
+                    <p class="text-center text-gray-600 mb-6">
+                        Dapatkan update terbaru tentang program dan kegiatan kami
+                    </p>
+                    <div class="max-w-md mx-auto flex gap-2">
+                        <input type="email" 
+                               placeholder="Masukkan email Anda" 
+                               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                        <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors glow-effect">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16 fade-in">
+                <div class="connect-section rounded-lg shadow-lg p-8 card-hover">
+                    <h2 class="text-3xl font-bold mb-8 text-center" style="color: #39ff14;">
+                        📫 Let's Connect Together
+                    </h2>
+                    
+                    <p align="center" class="mb-4">
+                      <a href="https://github.com/kongali1720" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/GitHub-kongali1720-39ff14?style=for-the-badge&logo=github&logoColor=white" height="35" alt="GitHub">
+                      </a>
+                      <a href="mailto:admin@kongali1720.com" class="social-button">
+                        <img src="https://img.shields.io/badge/Email-admin@kongali1720.com-DAF7A6?style=for-the-badge&logo=gmail&logoColor=white" height="35" alt="Email">
+                      </a>
+                      <a href="https://discord.gg/dXM88zFU" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/Discord-dXM88zFU-7289DA?style=for-the-badge&logo=discord&logoColor=white" height="35" alt="Discord">
+                      </a>
+                    </p>
+
+                    <p align="center" class="mb-4">
+                      <a href="https://instagram.com/kongali1720" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/Instagram-kongali1720-E4405F?style=for-the-badge&logo=instagram&logoColor=white" height="35" alt="Instagram">
+                      </a>
+                      <a href="https://twitter.com/kongali1720" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/Twitter-kongali1720-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" height="35" alt="Twitter">
+                      </a>
+                      <a href="https://kongali1720.github.io" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/Website-Interactive-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" height="35" alt="Website">
+                      </a>
+                    </p>
+
+                    <p align="center" class="mb-4">
+                      <a href="https://portfolio.kongali1720.com" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/Portfolio-View-9C27B0?style=for-the-badge&logo=portfolio&logoColor=white" height="35" alt="Portfolio">
+                      </a>
+                      <a href="https://wa.me/447440014278" target="_blank" class="social-button">
+                        <img src="https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" height="35" alt="WhatsApp">
+                      </a>
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    ℹ️ Tentang Kongali1720
                 </h2>
-                <div class="flex justify-center">
-                    <div class="w-full max-w-4xl">
-                        <div class="relative pb-9/16 h-0 overflow-hidden rounded-lg shadow-lg">
-                            <iframe 
-                                src="https://www.youtube.com/embed/TguP31-1gnQ" 
-                                class="absolute top-0 left-0 w-full h-full"
-                                style="aspect-ratio: 16/9; height: 400px;"
-                                frameborder="0" 
-                                allowfullscreen
-                                title="Video Kongali1720 - Berbagi Kasih untuk Anak Down Syndrome">
-                            </iframe>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">🎯 Visi Kami</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Menjadi organisasi terdepan dalam memberikan dukungan, edukasi, dan advokasi 
+                            untuk anak-anak dengan Down Syndrome dan keluarganya di Indonesia, 
+                            serta menciptakan masyarakat yang inklusif dan penuh kasih sayang.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">🚀 Misi Kami</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Memberikan dukungan komprehensif untuk perkembangan anak Down Syndrome</li>
+                            <li>• Mengedukasi masyarakat tentang Down Syndrome</li>
+                            <li>• Memfasilitasi terapi dan pendidikan khusus</li>
+                            <li>• Membangun komunitas support system yang kuat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Sejarah -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">📅 Perjalanan Kami</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="font-bold text-gray-800">2019 - Awal Mula</h4>
+                                <p class="text-gray-600">Kongali1720 didirikan dengan tujuan membantu anak-anak Down Syndrome</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="font-bold text-gray-800">2020 - Ekspansi Program</h4>
+                                <p class="text-gray-600">Meluncurkan program terapi dan edukasi komprehensif</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="font-bold text-gray-800">2021 - Partnership</h4>
+                                <p class="text-gray-600">Menjalin kerjasama dengan berbagai institusi pendidikan</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="font-bold text-gray-800">2022-2024 - Pertumbuhan</h4>
+                                <p class="text-gray-600">Telah membantu lebih dari 500 anak dengan berbagai program</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Badges -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">🏆 Pencapaian Kami</h3>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="achievement-badge">
+                                👶
+                            </div>
+                            <h4 class="font-bold text-gray-800">500+ Anak</h4>
+                            <p class="text-gray-600">Telah Terbantu</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="achievement-badge">
+                                🏥
+                            </div>
+                            <h4 class="font-bold text-gray-800">25+ Program</h4>
+                            <p class="text-gray-600">Berjalan Aktif</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="achievement-badge">
+                                👨‍👩‍👧‍👦
+                            </div>
+                            <h4 class="font-bold text-gray-800">50+ Donatur</h4>
+                            <p class="text-gray-600">Aktif Berkontribusi</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="achievement-badge">
+                                🌟
+                            </div>
+                            <h4 class="font-bold text-gray-800">5 Tahun</h4>
+                            <p class="text-gray-600">Pengalaman</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </main>
+    </div>
 
-        <section class="mb-16">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                    📸 Galeri Kegiatan
-                </h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="text-center">
-                        <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
-                            <img 
-                                src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS.png" 
-                                alt="Down Syndrome Awareness" 
-                                class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                            >
-                        </a>
-                        <p class="mt-4 text-gray-600 font-medium">Awareness & Understanding</p>
-                    </div>
-                    <div class="text-center">
-                        <a href="https://youtu.be/TguP31-1gnQ" target="_blank">
-                            <img 
-                                src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/DS01.png" 
-                                alt="Supporting Children with Down Syndrome" 
-                                class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                            >
-                        </a>
-                        <p class="mt-4 text-gray-600 font-medium">Care & Support</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-16">
-            <div class="connect-section rounded-lg shadow-lg p-8 card-hover">
-                <h2 class="text-3xl font-bold mb-8 text-center" style="color: #39ff14;">
-                    📫 Let's Connect together
+    <!-- Program Section -->
+    <div id="program" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    📋 Program Kami
                 </h2>
                 
-                <p align="center" class="mb-4">
-                  <a href="https://github.com/kongali1720" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/GitHub-kongali1720-39ff14?style=for-the-badge&logo=github&logoColor=white" height="35" alt="GitHub">
-                  </a>
-                  <a href="mailto:admin@kongali1720.com" class="social-button">
-                    <img src="https://img.shields.io/badge/Email-admin@kongali1720.com-DAF7A6?style=for-the-badge&logo=gmail&logoColor=white" height="35" alt="Email">
-                  </a>
-                  <a href="https://discord.gg/dXM88zFU" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/Discord-dXM88zFU-7289DA?style=for-the-badge&logo=discord&logoColor=white" height="35" alt="Discord">
-                  </a>
-                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">🎓</div>
+                        <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">Program Edukasi</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Kelas khusus dengan metode pembelajaran adaptif</li>
+                            <li>• Pelatihan keterampilan hidup sehari-hari</li>
+                            <li>• Program literasi dan numerasi</li>
+                            <li>• Kegiatan seni dan kreativitas</li>
+                        </ul>
+                    </div>
 
-                <p align="center" class="mb-4">
-                  <a href="https://instagram.com/kongali1720" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/Instagram-kongali1720-E4405F?style=for-the-badge&logo=instagram&logoColor=white" height="35" alt="Instagram">
-                  </a>
-                  <a href="https://twitter.com/kongali1720" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/Twitter-kongali1720-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" height="35" alt="Twitter">
-                  </a>
-                  <a href="https://kongali1720.github.io" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/Website-Interactive-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white" height="35" alt="Website">
-                  </a>
-                </p>
+                    <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">🏥</div>
+                        <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Program Terapi</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Terapi wicara dan komunikasi</li>
+                            <li>• Terapi okupasi dan motorik</li>
+                            <li>• Terapi fisik dan koordinasi</li>
+                            <li>• Terapi perilaku dan sosial</li>
+                        </ul>
+                    </div>
 
-                <p align="center" class="mb-4">
-                  <a href="https://portfolio.kongali1720.com" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/Portfolio-View-9C27B0?style=for-the-badge&logo=portfolio&logoColor=white" height="35" alt="Portfolio">
-                  </a>
-                  <a href="https://wa.me/447440014278" target="_blank" class="social-button">
-                    <img src="https://img.shields.io/badge/WhatsApp-Chat-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" height="35" alt="WhatsApp">
-                  </a>
-                </p>
+                    <div class="bg-purple-50 p-6 rounded-lg border-2 border-purple-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">👨‍👩‍👧‍👦</div>
+                        <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">Program Keluarga</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Konseling dan dukungan psikologis</li>
+                            <li>• Pelatihan orangtua dan pengasuh</li>
+                            <li>• Support group keluarga</li>
+                            <li>• Workshop parenting khusus</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-orange-50 p-6 rounded-lg border-2 border-orange-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">🎨</div>
+                        <h3 class="text-xl font-bold text-orange-800 mb-4 text-center">Program Kreatif</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Workshop seni dan kerajinan</li>
+                            <li>• Pertunjukan musik dan tari</li>
+                            <li>• Pameran karya anak-anak</li>
+                            <li>• Festival tahunan inklusif</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 p-6 rounded-lg border-2 border-red-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">🏃‍♂️</div>
+                        <h3 class="text-xl font-bold text-red-800 mb-4 text-center">Program Olahraga</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Special Olympics training</li>
+                            <li>• Swimming dan aqua therapy</li>
+                            <li>• Basket dan sepak bola adaptif</li>
+                            <li>• Senam dan yoga khusus</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-cyan-50 p-6 rounded-lg border-2 border-cyan-200 card-hover">
+                        <div class="text-4xl mb-4 text-center">💼</div>
+                        <h3 class="text-xl font-bold text-cyan-800 mb-4 text-center">Program Vokasional</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li>• Pelatihan keterampilan kerja</li>
+                            <li>• Magang di berbagai tempat usaha</li>
+                            <li>• Entrepreneurship sederhana</li>
+                            <li>• Life skills untuk kemandirian</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Call to Action untuk Program -->
+                <div class="mt-12 text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Tertarik dengan Program Kami?</h3>
+                    <p class="text-gray-600 mb-6">Hubungi kami untuk informasi lebih lanjut tentang pendaftaran dan persyaratan</p>
+                    <a href="https://wa.me/447440014278?text=Halo,%20saya%20tertarik%20dengan%20program%20Kongali1720" 
+                       target="_blank" 
+                       class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold glow-effect">
+                        💬 Hubungi Kami Sekarang
+                    </a>
+                </div>
             </div>
-        </section>
-    </main>
+        </main>
     </div>
 
     <div id="donasi" class="section">
         <main class="container mx-auto px-4 py-32">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
                 <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
                     💝 Donasi untuk Anak-anak Down Syndrome
                 </h2>
@@ -319,25 +863,77 @@
                         Setiap kontribusi akan membantu mereka mendapatkan pendidikan, terapi, dan dukungan yang mereka butuhkan.
                     </p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200">
-                        <h3 class="text-xl font-bold text-green-800 mb-4">💰 Donasi Tunai</h3>
-                        <p class="text-gray-600 mb-4">Rekening Bank untuk donasi:</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">💰 Transfer Bank</h3>
+                        <p class="text-gray-600 mb-4">Rekening Bank untuk support:</p>
                         <div class="bg-white p-4 rounded border">
                             <p class="font-semibold">Bank BCA</p>
                             <p>No. Rek: 0860724537</p>
                             <p>A.n: Murni Purnama S</p>
                         </div>
+                        <div class="mt-4 bg-white p-4 rounded border">
+                            <p class="font-semibold">E-Wallet Options</p>
+                            <p>PAYPAL: bungtempong99@gmail.com</p>
+                            <p>USDT-ERC20: 0x5448c44c2088f43d651dbeAACee99aFf5fEC95c6</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">📱 QRIS Payment</h3>
+                        <p class="text-gray-600 mb-4">Scan untuk support via QRIS:</p>
+                        <div class="bg-white p-4 rounded border text-center">
+                            <img src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/qris-DS.jpeg" 
+                                 alt="QRIS Code Kongali1720" 
+                                 class="w-48 h-48 mx-auto object-contain border rounded">
+                            <p class="text-sm text-gray-500 mt-2">Support via semua aplikasi QRIS</p>
+                        </div>
                     </div>
                     <div class="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
-                        <h3 class="text-xl font-bold text-blue-800 mb-4">🎁 Donasi Barang</h3>
-                        <p class="text-gray-600 mb-4">Kami menerima donasi berupa:</p>
-                        <ul class="list-disc list-inside text-gray-600">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">🎁 Support Barang</h3>
+                        <p class="text-gray-600 mb-4">Kami menerima support berupa:</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
                             <li>Alat terapi dan edukasi</li>
                             <li>Buku dan mainan edukatif</li>
                             <li>Pakaian anak</li>
                             <li>Perlengkapan sekolah</li>
+                            <li>Peralatan olahraga adaptif</li>
+                            <li>Komputer dan tablet untuk belajar</li>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- Donation Impact Section -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">💫 Dampak Support Anda</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200">
+                            <div class="text-3xl mb-2">💡</div>
+                            <h4 class="font-bold text-yellow-800">Rp 100.000</h4>
+                            <p class="text-gray-600 text-sm">1 sesi terapi wicara untuk anak</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+                            <div class="text-3xl mb-2">📚</div>
+                            <h4 class="font-bold text-blue-800">Rp 250.000</h4>
+                            <p class="text-gray-600 text-sm">Paket buku edukatif untuk 1 bulan</p>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                            <div class="text-3xl mb-2">🎓</div>
+                            <h4 class="font-bold text-green-800">Rp 500.000</h4>
+                            <p class="text-gray-600 text-sm">Biaya sekolah khusus selama 1 bulan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code Section -->
+                <div class="mt-12 text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">📱 Donasi Cepat via QR Code</h3>
+                    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+                        <p class="text-gray-600 mb-4">Scan QR Code untuk donasi langsung:</p>
+                        <div class="bg-gray-100 h-48 flex items-center justify-center rounded-lg mb-4">
+                            <p class="text-gray-500">QR Code QRIS</p>
+                        </div>
+                        <p class="text-sm text-gray-500">Atau hubungi kami untuk informasi lebih lanjut</p>
                     </div>
                 </div>
             </div>
@@ -346,13 +942,42 @@
 
     <div id="donatur" class="section">
         <main class="container mx-auto px-4 py-32">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
                 <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
                     👥 Daftar Donatur
                 </h2>
                 <p class="text-center text-lg text-gray-600 mb-8">
                     Terima kasih kepada para donatur yang telah berkontribusi untuk anak-anak Down Syndrome
                 </p>
+                
+                <!-- Hall of Fame Section -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-gray-800">🌟 Hall of Fame Donatur</h3>
+                    <div class="flex justify-center space-x-8 mb-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-2">
+                                🥇
+                            </div>
+                            <p class="font-bold text-gray-800">Top Contributor</p>
+                            <p class="text-sm text-gray-600">Kongali1720.com</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-2">
+                                🥈
+                            </div>
+                            <p class="font-bold text-gray-800">Regular Supporter</p>
+                            <p class="text-sm text-gray-600">ZL GROUP</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-amber-600 to-amber-800 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-2">
+                                🥉
+                            </div>
+                            <p class="font-bold text-gray-800">Community Hero</p>
+                            <p class="text-sm text-gray-600">Ateka COIN</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="donor-card p-6 rounded-lg card-hover">
                         <h3 class="font-bold text-lg text-gray-800 mb-2">🌟 Donatur Utama</h3>
@@ -368,10 +993,11 @@
                     <div class="donor-card p-6 rounded-lg card-hover">
                         <h3 class="font-bold text-lg text-gray-800 mb-2">💚 Donatur Reguler</h3>
                         <ul class="text-gray-600 space-y-1">
+                            <li>• Ibu Tuti Setianingsih - KBB</li>
                             <li>• PT. Raden Muhammad Nusantara - Jawa Timur</li>
                             <li>• PT. Cahaya Sakti Bersama - Jakarta</li>
-                            <li>• Muhammad Iqbal - Lawyer - Makassar</li>
-                            <li>• Pasundan Istri KBB</li>
+                            <li>• Muhammad Iqbal - Lawyer KAI - Makassar</li>
+                            <li>• Eyang T. Djuariah - Pasundan Istri KBB</li>
                             <li>• MPBI Masjid Al-Irsyad - Kota Baru Parahyangan - KBB</li>
                             <li>• Alhidayah Masjid Ar-Ridwan - KBB</li>
                             <li>• Majelis Perempuan Berzikir Indonesia - KBB</li>
@@ -384,20 +1010,178 @@
                         <h3 class="font-bold text-lg text-gray-800 mb-2">🤝 Donatur Barang</h3>
                         <ul class="text-gray-600 space-y-1">
                             <li>• Koko Daniel - ATEKA -Toko Mainan Anak - Makassar</li>
-                            <li>• Riki - AERI Community - Bandung</li>
+                            <li>• Ricky H - AERI Community - Bandung</li>
                             <li>• KONG Community - Github</li>
                             <li>• Ibu Murni Purnama S</li>
                             <li>• Keluarga Besar DJATNIKA - Bandung - Cianjur</li>
-                            <li>• Keluarga Besar PADMADISASTRA -Bandung</li>
-                            <li>• Dedi Priadji - Komunitas BRIO Desa</li>
+                            <li>• Keluarga Besar PADMADISASTRA - Cianjur</li>
+                            <li>• Dedy Priaji - Komunitas BRIO DESA</li>
                             <li>• RRQMouZaa1710'7S @MouZaa1710 - TEAM RRQ - PRO Players</li>
                         </ul>
                     </div>
                 </div>
+                
+                <!-- Monthly Donors Section -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">💝 Donatur Bulanan</h3>
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border-2 border-purple-200">
+                        <p class="text-center text-gray-600 mb-4">
+                            Para pahlawan yang memberikan dukungan rutin setiap bulan:
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• Anonymous Donor #1 - Jakarta</li>
+                            </ul>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>• Hamba Allah - Bandung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mt-8 text-center">
-                    <p class="text-gray-600 italic">
+                    <p class="text-gray-600 italic mb-4">
                         "Setiap nama di sini adalah bukti kebaikan dan kepedulian terhadap anak-anak istimewa kita"
                     </p>
+                    <div class="border-t border-gray-300 pt-6">
+                        <p class="text-sm text-gray-500">
+                            Ingin bergabung menjadi donatur? 
+                            <a href="#" onclick="showSection('donasi')" class="text-green-500 hover:text-green-600 font-semibold">
+                                Klik di sini untuk berdonasi
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- News/Blog Section -->
+    <div id="berita" class="section">
+        <main class="container mx-auto px-4 py-32">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
+                    📰 Berita & Artikel Terbaru
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl">
+                            🎓
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Program Edukasi Terbaru 2024</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Meluncurkan program pembelajaran digital khusus untuk anak-anak Down Syndrome 
+                                dengan teknologi terdepan...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">15 Januari 2024</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-4xl">
+                            🏆
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Prestasi Anak-anak di Special Olympics</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Tim Kongali1720 meraih 5 medali emas dalam kompetisi Special Olympics 
+                                tingkat nasional...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">8 Januari 2024</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-4xl">
+                            🤝
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Kerjasama Baru dengan Rumah Sakit</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Menjalin partnership dengan RSUD untuk memberikan layanan terapi 
+                                yang lebih komprehensif...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">3 Januari 2024</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-4xl">
+                            🎨
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Pameran Seni Anak Down Syndrome</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Pameran karya seni anak-anak Down Syndrome mendapat apresiasi tinggi 
+                                dari masyarakat luas...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">28 Desember 2023</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center text-white text-4xl">
+                            💝
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Campaign "Cinta Tanpa Batas"</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Campaign awareness terbesar kami berhasil mengumpulkan dana 
+                                untuk 100 anak selama setahun...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">20 Desember 2023</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-4xl">
+                            📱
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Aplikasi Mobile Kongali1720</h3>
+                            <p class="text-gray-600 text-sm mb-4">
+                                Meluncurkan aplikasi mobile untuk memudahkan orangtua memantau 
+                                perkembangan anak...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500">15 Desember 2023</span>
+                                <button class="text-blue-500 hover:text-blue-600 text-sm font-semibold">Baca Selengkapnya</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="mt-12 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border-2 border-blue-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">📬 Subscribe Newsletter</h3>
+                    <p class="text-center text-gray-600 mb-6">
+                        Dapatkan update berita dan informasi program terbaru langsung di email Anda
+                    </p>
+                    <div class="max-w-md mx-auto flex gap-2">
+                        <input type="email" 
+                               placeholder="Email Anda" 
+                               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors glow-effect">
+                            Subscribe
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -405,80 +1189,190 @@
 
     <div id="kontak" class="section">
         <main class="container mx-auto px-4 py-32">
-            <div class="glass-card rounded-lg shadow-lg p-8 card-hover">
+            <div class="glass-card rounded-lg shadow-lg p-8 card-hover fade-in">
                 <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">
                     📞 Hubungi Kami
                 </h2>
-                <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="space-y-6">
-                        <a href="tel:+447440014278" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fas fa-phone text-green-500 text-3xl"></i>
+                        <a href="tel:+447440014278" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-green-500 text-xl"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Telepon</h3>
                                 <p class="text-gray-600">+44 7440014278</p>
+                                <p class="text-xs text-gray-500">24/7 Customer Service</p>
                             </div>
                         </a>
                         
-                        <a href="https://wa.me/447440014278" target="_blank" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
+                        <a href="https://wa.me/447440014278" target="_blank" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-green-500 text-xl"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">WhatsApp</h3>
                                 <p class="text-gray-600">+44 7440014278</p>
+                                <p class="text-xs text-gray-500">Chat langsung dengan tim kami</p>
                             </div>
                         </a>
                         
-                        <a href="mailto:admin@kongali1720.com" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fas fa-envelope text-blue-500 text-3xl"></i>
-                            </div>
+                        <div class="space-y-4">
+                            <a href="mailto:admin@kongali1720.c0m" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-blue-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Email Admin</h3>
+                                    <p class="text-gray-600">admin@kongali1720.com</p>
+                                    <p class="text-xs text-gray-500">Email utama organisasi</p>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:admin@zlclothindustries.com" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-purple-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Email Partner</h3>
+                                    <p class="text-gray-600">admin@zlclothindustries.com</p>
+                                    <p class="text-xs text-gray-500">Partnership dan kerjasama</p>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:kongali1720@younext.cloud" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-cloud text-indigo-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Email Cloud</h3>
+                                    <p class="text-gray-600">kongali1720@younext.cloud</p>
+                                    <p class="text-xs text-gray-500">Layanan digital dan teknologi</p>
+                                </div>
+                            </a>
+                        </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Email</h3>
                                 <p class="text-gray-600">admin@kongali1720.com</p>
+                                <p class="text-xs text-gray-500">Respon dalam 24 jam</p>
                             </div>
                         </a>
                         
-                        <a href="https://github.com/kongali1720" target="_blank" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fab fa-github text-gray-800 text-3xl"></i>
+                        <a href="https://github.com/kongali1720" target="_blank" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <i class="fab fa-github text-gray-800 text-xl"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">GitHub</h3>
                                 <p class="text-gray-600">kongali1720</p>
+                                <p class="text-xs text-gray-500">Open source projects</p>
                             </div>
                         </a>
                     </div>
                     
                     <div class="space-y-6">
-                        <a href="https://kongali1720.github.io" target="_blank" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fas fa-globe text-orange-500 text-3xl"></i>
+                        <a href="https://kongali1720.github.io" target="_blank" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-globe text-orange-500 text-xl"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Website</h3>
                                 <p class="text-gray-600">kongali1720.github.io</p>
+                                <p class="text-xs text-gray-500">Portal utama kami</p>
                             </div>
                         </a>
                         
-                        <a href="https://younext.cloud" target="_blank" class="flex items-center space-x-4">
-                            <div>
-                                <i class="fas fa-cloud text-cyan-500 text-3xl"></i>
+                        <a href="https://younext.cloud" target="_blank" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-cloud text-cyan-500 text-xl"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Cloud Platform</h3>
                                 <p class="text-gray-600">Younext.cloud</p>
+                                <p class="text-xs text-gray-500">Platform teknologi kami</p>
                             </div>
                         </a>
                         
-                        <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200">
-                            <h3 class="font-bold text-green-800 mb-2">💬 Tim Call Center</h3>
-                            <p class="text-gray-600 mb-4">Kami siap membantu Anda 24/7</p>
-                            <img src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/call_center.jpg" 
-                                alt="Call Center Team" 
-                                class="w-full h-32 object-cover rounded-lg shadow-md">
+                        <a href="https://zlclothindustries.com" target="_blank" class="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-tshirt text-green-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800">ZL Cloth Industries</h3>
+                                <p class="text-gray-600">zlclothindustries.com</p>
+                                <p class="text-xs text-gray-500">Partner industri clothing</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Office Address -->
+                        <div class="p-4 bg-white rounded-lg shadow-sm">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-red-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800">Alamat Kantor</h3>
+                                    <p class="text-gray-600">Jl. Parahyangan No. 99 F Kota Baru Parahyangan - Bandung</p>
+                                    <p class="text-xs text-gray-500">Buka Senin-Jumat: 08:00-17:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="p-4 bg-red-50 rounded-lg border-2 border-red-200">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-red-800">Kontak Darurat</h3>
+                                    <p class="text-red-600">+44 744-001-4278</p>
+                                    <p class="text-xs text-red-500">24/7 untuk situasi darurat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">✉️ Kirim Pesan</h3>
+                    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+                        <form class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nama Lengkap" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                <input type="email" placeholder="Email" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            </div>
+                            <input type="text" placeholder="Subjek" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <textarea rows="5" placeholder="Pesan Anda" 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                            <button type="submit" 
+                                    class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors glow-effect">
+                                📤 Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Call Center Team -->
+                <div class="mt-12">
+                    <div class="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+                        <h3 class="font-bold text-green-800 mb-2 text-center text-xl">💬 Tim Call Center 24/7</h3>
+                        <p class="text-gray-600 mb-4 text-center">Kami siap membantu Anda kapan saja</p>
+                        <img src="https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/call_center.jpg" 
+                            alt="Call Center Team" 
+                            class="w-full h-48 object-cover rounded-lg shadow-md">
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-gray-600 mb-2">Tim support profesional siap melayani dengan ramah</p>
+                            <div class="flex justify-center space-x-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">Bahasa Indonesia</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">English</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">24/7 Support</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -486,6 +1380,32 @@
         </main>
     </div>
 
+    <!-- CTA Section -->
+    <section class="cta-section py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">Bergabunglah dengan Misi Kami!</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Setiap dukungan Anda membuat perbedaan besar dalam kehidupan anak-anak istimewa
+            </p>
+            <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                <a href="#" onclick="showSection('donasi')" 
+                   class="cta-button inline-block px-8 py-3 rounded-lg font-semibold transition-all">
+                    💝 Donasi Sekarang
+                </a>
+                <a href="https://wa.me/447440014278?text=Saya%20ingin%20menjadi%20volunteer" 
+                   target="_blank" 
+                   class="cta-button inline-block px-8 py-3 rounded-lg font-semibold transition-all">
+                    🤝 Jadi Volunteer
+                </a>
+                <a href="#" onclick="showSection('program')" 
+                   class="cta-button inline-block px-8 py-3 rounded-lg font-semibold transition-all">
+                    📋 Lihat Program
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Widget -->
     <div class="whatsapp-widget" id="whatsappWidget">
         <div onclick="toggleWhatsAppProfile()" 
             class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center space-x-2 cursor-pointer">
@@ -497,6 +1417,7 @@
         </div>
     </div>
 
+    <!-- WhatsApp Profile Modal -->
     <div class="whatsapp-profile-modal" id="whatsappModal">
         <div class="p-4">
             <div class="flex items-center justify-between mb-4">
@@ -548,15 +1469,69 @@
         </div>
     </div>
 
-    <footer class="bg-black bg-opacity-80 text-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-2xl font-bold mb-4">Kongali1720</h3>
-            <p class="text-gray-300 mb-6">
-                Bersama kita wujudkan dunia yang lebih inklusif untuk anak-anak istimewa
-            </p>
-            <div class="border-t border-gray-600 pt-6">
+    <footer class="bg-black bg-opacity-90 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Kongali1720</h3>
+                    <p class="text-gray-300 mb-4">
+                        Bersama kita wujudkan dunia yang lebih inklusif untuk anak-anak istimewa
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/kongali1720" class="text-blue-400 hover:text-blue-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="https://instagram.com/kongali1720" class="text-pink-400 hover:text-pink-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://twitter.com/kongali1720" class="text-blue-400 hover:text-blue-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://youtube.com/kongali1720" class="text-red-400 hover:text-red-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-green-400">Program</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" onclick="showSection('program')" class="hover:text-green-400">Program Edukasi</a></li>
+                        <li><a href="#" onclick="showSection('program')" class="hover:text-green-400">Program Terapi</a></li>
+                        <li><a href="#" onclick="showSection('program')" class="hover:text-green-400">Program Keluarga</a></li>
+                        <li><a href="#" onclick="showSection('program')" class="hover:text-green-400">Program Olahraga</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-green-400">Dukungan</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" onclick="showSection('donasi')" class="hover:text-green-400">Cara Support</a></li>
+                        <li><a href="#" onclick="showSection('donatur')" class="hover:text-green-400">Daftar Supporter</a></li>
+                        <li><a href="#" onclick="showSection('kontak')" class="hover:text-green-400">Hubungi Kami</a></li>
+                        <li><a href="https://wa.me/447440014278" target="_blank" class="hover:text-green-400">WhatsApp</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-green-400">Informasi</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" onclick="showSection('about')" class="hover:text-green-400">Tentang Kami</a></li>
+                        <li><a href="#" onclick="showSection('berita')" class="hover:text-green-400">Berita Terbaru</a></li>
+                        <li><a href="mailto:admin@kongali1720.c0m" class="hover:text-green-400">admin@kongali1720.c0m</a></li>
+                        <li><a href="mailto:admin@zlclothindustries.com" class="hover:text-green-400">admin@zlclothindustries.com</a></li>
+                        <li><a href="mailto:kongali1720@younext.cloud" class="hover:text-green-400">kongali1720@younext.cloud</a></li>
+                        <li><a href="https://zlclothindustries.com" target="_blank" class="hover:text-green-400">zlclothindustries.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-6 mt-8 text-center">
                 <p class="text-sm text-gray-400">
-                    © 2024 Kongali1720. Made with ❤️ for children with Down Syndrome.
+                    © 2022 Kongali1720. Made with ❤️ for children with Down Syndrome dan anak anak berkebutuhan khusus juga.
+                </p>
+                <p class="text-xs text-gray-500 mt-2">
+                    All rights reserved. Website designed with love and care.
                 </p>
             </div>
         </div>
@@ -565,8 +1540,57 @@
     <script>
         let whatsappModalVisible = false;
         let autoShowTimer;
+        let currentSection = 'home';
         
+        // Loading Bar Animation
+        function updateLoadingBar(percent) {
+            const loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.width = percent + '%';
+            if (percent === 100) {
+                setTimeout(() => {
+                    loadingBar.style.opacity = '0';
+                }, 500);
+            }
+        }
+
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = Math.floor(current);
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+
+        // Intersection Observer for animations
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        
+                        // Animate counters
+                        if (entry.target.classList.contains('counter')) {
+                            animateCounter(entry.target);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('.counter').forEach(el => observer.observe(el));
+        }
+
         function showSection(sectionName) {
+            // Update loading bar
+            updateLoadingBar(0);
+            setTimeout(() => updateLoadingBar(100), 300);
+
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
@@ -582,9 +1606,17 @@
             
             // Add active state to clicked button
             event.target.classList.add('ring-2', 'ring-white');
+            currentSection = sectionName;
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
         }
         
         function toggleWhatsAppProfile() {
@@ -647,16 +1679,169 @@
                 closeWhatsAppProfile();
             }
         });
-        
-        // Initialize
+
+        // Scroll to top button visibility
+        function toggleScrollButton() {
+            const floatingAction = document.querySelector('.floating-action');
+            if (window.pageYOffset > 300) {
+                floatingAction.style.opacity = '1';
+                floatingAction.style.pointerEvents = 'all';
+            } else {
+                floatingAction.style.opacity = '0.3';
+                floatingAction.style.pointerEvents = 'none';
+            }
+        }
+
+        // Newsletter subscription
+        function subscribeNewsletter(email) {
+            // This would typically send to your backend
+            alert('Terima kasih! Anda akan mendapatkan newsletter kami.');
+        }
+
+        // Form submission
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize first nav button as active
             document.querySelector('.nav-button').classList.add('ring-2', 'ring-white');
             
-            // Start random WhatsApp show after 15 seconds
+            // Start WhatsApp random show after 15 seconds
             setTimeout(() => {
                 scheduleRandomWhatsAppShow();
             }, 15000);
+
+            // Initialize observers
+            observeElements();
+
+            // Scroll listener
+            window.addEventListener('scroll', toggleScrollButton);
+
+            // Newsletter form
+            const newsletterForms = document.querySelectorAll('form');
+            newsletterForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = form.querySelector('input[type="email"]').value;
+                    if (email) {
+                        subscribeNewsletter(email);
+                        form.reset();
+                    }
+                });
+            });
+
+            // Animate counters on page load
+            setTimeout(() => {
+                document.querySelectorAll('.counter').forEach(animateCounter);
+            }, 1000);
+
+            // Initialize loading bar
+            updateLoadingBar(100);
         });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced page transitions
+        function enhancedShowSection(sectionName) {
+            // Add transition effects
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                showSection(sectionName);
+                document.body.style.opacity = '1';
+            }, 150);
+        }
+
+        // Mobile menu toggle (if needed)
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav .container');
+            nav.classList.toggle('flex-col');
+        }
+
+        // Lazy loading for images
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // Error handling for missing images
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.style.display = 'none';
+                console.log('Image failed to load:', e.target.src);
+            }
+        }, true);
+
+        // Performance monitoring
+        function logPerformance() {
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const perfData = performance.timing;
+                        const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+                        console.log('Page load time:', loadTime + 'ms');
+                    }, 0);
+                });
+            }
+        }
+
+        // Initialize performance monitoring
+        logPerformance();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Enhanced showSection function that closes mobile menu
+        const originalShowSection = showSection;
+        showSection = function(section) {
+            originalShowSection(section);
+            
+            // Close mobile menu if open
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            
+            if (window.innerWidth < 768 && menu && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        };
     </script>
 </body>
 </html>
