@@ -1,0 +1,23 @@
+{
+  "name": "Kongali Token List",
+  "logoURI": "https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/kac-logo.png",
+  "timestamp": "2025-10-04T00:00:00+00:00",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 1,
+      "address": "0xe71185E2F039013993F2Bc7Da8e51B63E40B063D",
+      "name": "KongaliCoin",
+      "symbol": "KAC",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/kongali1720/kongali1720.github.io/main/kac-logo.png",
+      "website": "https://www.kongali1720.com",
+      "description": "KongaliCoin (KAC) is a decentralized ERC20 token built to empower transparency, fairness, and innovation in digital ecosystems.",
+      "tags": ["defi", "community", "utility", "erc20"]
+    }
+  ]
+}
