@@ -1,0 +1,33 @@
+{
+  "network": "ethereum-mainnet",
+  "version": "uniswap-v4",
+  "description": "Liquidity pool creation for FUSDT/ETH pair on Uniswap v4",
+  "action": "createPoolAndAddLiquidity",
+  "pool_parameters": {
+    "tokenA": {
+      "symbol": "ETH",
+      "address": "0xC02aaa39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "amount": "0.01"
+    },
+    "tokenB": {
+      "symbol": "FUSDT",
+      "address": "0x0Baa69c53d9A872b0F665e5ff314084eF77eE181",
+      "amount": "35"
+    },
+    "feeTier": "0.01%",
+    "priceRange": {
+      "min": "2999.7964",
+      "max": "3999.7427"
+    },
+    "initialPrice": "3500",
+    "tickSpacing": "10",
+    "useFullRange": false
+  },
+  "gas_estimate": {
+    "min": "0.012 ETH",
+    "max": "0.015 ETH"
+  },
+  "sender": "YOUR_WALLET_ADDRESS",
+  "recipient": "UniswapV4Factory",
+  "notes": "Creates a new FUSDT/ETH liquidity pool on Uniswap v4 with a $1 peg (1 FUSDT = 1 USD)."
+}
